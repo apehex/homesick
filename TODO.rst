@@ -23,3 +23,11 @@ Packages
 apt
 pip
 pipenv => dev
+
+UI
+--
+
+- authentification
+- sélection type machine
+- sélection config
+- génération d'une distribution debian ?
