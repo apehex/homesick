@@ -1,5 +1,9 @@
+####
+TODO
+####
+
 Naming
-------
+======
 
 impatient = mise en place rapide
 lazy = tout se fait automatiquement
@@ -11,23 +15,30 @@ animal =
 acronyme =
 
 Configuration
--------------
+=============
 
 bashrc
 gitignore
 profile
 
 Packages
---------
+========
 
 apt
 pip
 pipenv => dev
+google cloud sdk
 
 UI
---
+==
 
 - authentification
 - sélection type machine
 - sélection config
 - génération d'une distribution debian ?
+
+DEPLOYMENT
+==========
+
+- docker
+- debian distro
