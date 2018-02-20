@@ -28,6 +28,7 @@ apt
 pip
 pipenv => dev
 google cloud sdk
+firmware wifi
 
 UI
 ==
@@ -40,5 +41,6 @@ UI
 DEPLOYMENT
 ==========
 
+- separate the dev / multimedia / core packages
 - docker
 - debian distro
