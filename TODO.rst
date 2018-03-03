@@ -38,6 +38,13 @@ UI
 - sélection config
 - génération d'une distribution debian ?
 
+SYNCHRONIZATION
+===============
+
+- [ ] deploy rsync script
+- [ ] add the script to crontab
+- [ ] ignore .git files : --exclude=PATTERN et --delete-excluded options
+
 DEPLOYMENT
 ==========
 
