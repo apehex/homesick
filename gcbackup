@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+#
+# Backup selected directories to a GoogleCloud Nearline bucket
+#
+# Example daily cron:
+# @daily /usr/local/bin/gcbackup >/dev/null 2>&1
+#
+
+# Directories to backup to the cloud 
+declare -A DIR
+DIR["documents"]="$HOME/documents"
+DIR["dotfiles"]="$HOME/dotfiles"
+DIR["images"]="$HOME/images"
+DIR["music"]="$HOME/music"
+DIR["workspace"]="$HOME/workspace"
+
+# Bucket name 
+BUCKET=nunatak
+
+# Files to ignore
+ARCHIVERS='.+\.7z$|.+\.dmg$|.+\.gz$|.+\.iso$|.+\.jar$|.+\.rar$|.+\.tar$|.+\.zip$'
+COMPILERS='.+\.o$|.+\.pyc$|.+\.hex$|.+\.out$'
+DATABASES='.+\.sql$|.+\.sqlite$|.+\.csv$'
+VERSIONING='.+\.git/.+|.+\.git$'
+LOGS='.+\.log$'
+VIM='.+~$|.+\.swp$|.+\.swo$|.+\.swn$'
+EXCLUDES="$ARCHIVERS|$COMPILERS|$DATABASES|$LOGS|$VERSIONING|$VIM"
+
+echo $EXCLUDES
+
+# Backup specified directories!
+for i in "${!DIR[@]}"; do
+    gsutil -m rsync -C -U -r -d -x $EXCLUDES ${DIR[$i]} gs://$BUCKET/$i
+done
