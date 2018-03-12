@@ -17,18 +17,29 @@ acronyme =
 Configuration
 =============
 
-bashrc
-gitignore
-profile
+- [x] bash
+  - bashrc
+  - bash_aliases
+  - profile
+- [x] git
+  - gitconfig
+  - gitignore
+- [ ] awesome window manager !
 
 Packages
 ========
 
-apt
-pip
-pipenv => dev
-google cloud sdk
-firmware wifi
+- [x] apt
+- [x] pip
+  - [ ] pipenv
+  - [ ] remove project specific packages
+- [ ] gcloud sdk
+- [ ] non-free packages
+  - wifi
+- [ ] group the packages
+  - core
+  - dev
+  - multimedia
 
 UI
 ==
@@ -38,16 +49,16 @@ UI
 - sélection config
 - génération d'une distribution debian ?
 
-SYNCHRONIZATION
-===============
+BACKUP
+======
 
 - [ ] deploy rsync script
 - [ ] add the script to crontab
-- [ ] ignore .git files : --exclude=PATTERN et --delete-excluded options
+- [x] ignore .git files : --exclude=PATTERN et --delete-excluded options
 
 DEPLOYMENT
 ==========
 
-- separate the dev / multimedia / core packages
-- docker
-- debian distro
+- [ ] script to install everything
+- [ ] package as a docker
+- [ ] package as a debian distro
