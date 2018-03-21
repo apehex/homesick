@@ -24,7 +24,6 @@ bsdutils
 busybox
 bzip2
 calibre
-chromium
 console-setup
 coreutils
 cpio
@@ -58,10 +57,10 @@ fonts-sil-gentium-basic
 ftp
 gcc-4.8-base
 gcc-4.9-base
-gedit
 gettext-base
 gnome-mime-data
 gnupg
+google-chrome-stable
 google-cloud-sdk
 gpgv
 grep
