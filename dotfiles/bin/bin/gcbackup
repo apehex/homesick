@@ -9,7 +9,7 @@
 # Directories to backup to the cloud 
 declare -A DIR
 DIR["documents"]="$HOME/documents"
-DIR["dotfiles"]="$HOME/dotfiles"
+DIR["dotfiles"]="$HOME/.dotfiles"
 DIR["images"]="$HOME/images"
 DIR["music"]="$HOME/music"
 DIR["workspace"]="$HOME/workspace"
