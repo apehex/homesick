@@ -1,9 +1,6 @@
-build-simple-cdd
 calibre
+curl
 google-cloud-sdk
-keepassx
-libreoffice
-libreoffice-base
-libreoffice-calc
 powertop
+vim
 stow
