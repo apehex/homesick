@@ -1,6 +1,7 @@
 adduser
 apt
 apt-listchanges
+apt-transport-https
 apt-utils
 awesome
 base-files
@@ -33,6 +34,7 @@ e2fslibs
 e2fsprogs
 file
 findutils
+firmware-iwlwifi
 gcc-6-base
 gettext-base
 gnupg
@@ -172,6 +174,7 @@ ncurses-bin
 ncurses-term
 netbase
 netcat-traditional
+network-manager
 openssh-client
 passwd
 pciutils
