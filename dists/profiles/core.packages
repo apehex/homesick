@@ -177,6 +177,7 @@ netcat-traditional
 network-manager
 openssh-client
 passwd
+pavucontrol
 pciutils
 perl
 perl-base
