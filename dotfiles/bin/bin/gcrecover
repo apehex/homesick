@@ -9,7 +9,7 @@
 # Directories to backup to the cloud 
 declare -A dir
 dir["documents"]="$HOME/documents"
-dir["dotfiles"]="$HOME/dotfiles"
+dir["dotfiles"]="$HOME/.dotfiles"
 dir["images"]="$HOME/images"
 dir["music"]="$HOME/music"
 dir["workspace"]="$HOME/workspace"
@@ -19,5 +19,6 @@ bucket=nunatak
 
 # Backup specified directories!
 for i in "${!dir[@]}"; do
-    /usr/local/bin/gsutil -m rsync -r gs://$bucket/$i ${dir[$i]}
+    echo "= Recovering ${DIR[$i]} ="
+    gsutil -m rsync -r gs://$bucket/$i ${dir[$i]}
 done

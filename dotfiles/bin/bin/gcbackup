@@ -9,7 +9,7 @@
 # Directories to backup to the cloud 
 declare -A DIR
 DIR["documents"]="$HOME/documents"
-DIR["dotfiles"]="$HOME/dotfiles"
+DIR["dotfiles"]="$HOME/.dotfiles"
 DIR["images"]="$HOME/images"
 DIR["music"]="$HOME/music"
 DIR["workspace"]="$HOME/workspace"
@@ -26,9 +26,8 @@ LOGS='.+\.log$'
 VIM='.+~$|.+\.swp$|.+\.swo$|.+\.swn$'
 EXCLUDES="$ARCHIVERS|$COMPILERS|$DATABASES|$LOGS|$VERSIONING|$VIM"
 
-echo $EXCLUDES
-
 # Backup specified directories!
 for i in "${!DIR[@]}"; do
+    echo "= Backing ${DIR[$i]} ="
     gsutil -m rsync -C -U -r -d -x $EXCLUDES ${DIR[$i]} gs://$BUCKET/$i
 done
