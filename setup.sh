@@ -5,11 +5,11 @@ export LANG=C.UTF-8
 
 # Deploy Config Repo #
 #########################
-if [-d ~/.dotfiles/]; then
+if [ -d ~/.dotfiles/ ]; then
     rm -r ~/.dotfiles/
 fi
 cp -r ./dotfiles/ ~/.dotfiles/
-cd ~/.dotfiles/
+#cd ~/.dotfiles/
 
 # Link Configuration to Repo #
 ##############################
@@ -38,5 +38,7 @@ echo "deb http://packages.cloud.google.com/apt $GCLOUD_SDK_REPO main" | sudo tee
 # Install packages #
 ####################
 sudo apt update
-#cat profiles/core.packages | xargs sudo apt-get install
-#cat profiles/dev.packages | xargs sudo apt-get install
+sudo apt-get install $(grep -vE "^\s*#" dists/profiles/core.packages  | tr "\n" " ")
+sudo apt-get install $(grep -vE "^\s*#" dists/profiles/tools.packages  | tr "\n" " ")
+#sudo apt-get install $(grep -vE "^\s*#" dists/profiles/dev.packages  | tr "\n" " ")
+sudo apt-get install $(grep -vE "^\s*#" dists/profiles/media.packages  | tr "\n" " ")
