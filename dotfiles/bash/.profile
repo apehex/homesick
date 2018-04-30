@@ -22,4 +22,5 @@ if [ -d "$HOME/bin" ] ; then
 fi
 
 # change the local : improves ls sorting
-LANG=C
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
