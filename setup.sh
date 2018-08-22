@@ -35,10 +35,17 @@ GCLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 echo "deb http://packages.cloud.google.com/apt $GCLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
 
-# Install packages #
-####################
+# Install apt packages #
+########################
 sudo apt update
 sudo apt-get install $(grep -vE "^\s*#" dists/profiles/core.packages  | tr "\n" " ")
 sudo apt-get install $(grep -vE "^\s*#" dists/profiles/tools.packages  | tr "\n" " ")
 #sudo apt-get install $(grep -vE "^\s*#" dists/profiles/dev.packages  | tr "\n" " ")
 sudo apt-get install $(grep -vE "^\s*#" dists/profiles/media.packages  | tr "\n" " ")
+
+# Install pip packages #
+########################
+
+# Install snap packages #
+#########################
+#sudo snap install heroku --classic
