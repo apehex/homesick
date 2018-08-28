@@ -193,6 +193,7 @@ reportbug
 rsyslog
 sed
 sensible-utils
+software-properties-common
 sudo
 systemd
 systemd-sysv
