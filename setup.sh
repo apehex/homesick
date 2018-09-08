@@ -15,9 +15,9 @@ export LANG=C.UTF-8
 # Config Repo #
 ###############
 if [[ "$MODE" = *"setup"* ]]; then
-    cp -f -r ./dotfiles/ ~/.dotfiles/
+    rsync -avh --progress --inplace ./dotfiles/ ~/.dotfiles/
 elif [[ "$MODE" = *"backup"* ]]; then
-    cp -f -r ~/.dotfiles ./dotfiles
+    rsync -avh --progress --inplace ~/.dotfiles/ ./dotfiles/
 fi
 
 # Link Configuration to Repo #
