@@ -16,6 +16,11 @@ export LANG=C.UTF-8
 ###############
 if [[ "$MODE" = *"setup"* ]]; then
     rsync -avh --progress --inplace ./dotfiles/ ~/.dotfiles/
+    if [ -d ~/.dotfiles/bin/bin/ ]; then
+        for filename in ~/.dotfiles/bin/bin/* ; do
+            chmod +x $filename
+        done
+    fi
 elif [[ "$MODE" = *"backup"* ]]; then
     rsync -avh --progress --inplace ~/.dotfiles/ ./dotfiles/
 fi
@@ -73,7 +78,7 @@ fi
 # Stow the dotfiles #
 #####################
 if [[ "$MODE" = *"setup"* ]]; then
-    for filename in ~/.dotfiles/*/ ~/.dotfiles/.*/ ; do
+    for filename in ~/.dotfiles/*/ ; do
         stow $filename
     done
 fi
