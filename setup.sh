@@ -17,7 +17,7 @@ export LANG=C.UTF-8
 if [[ "$MODE" = *"setup"* ]]; then
     cp -f -r ./dotfiles/ ~/.dotfiles/
 elif [[ "$MODE" = *"backup"* ]]; then
-    cp -f -r ~/.dotfiles/ ./dotfiles/
+    cp -f -r ~/.dotfiles ./dotfiles
 fi
 
 # Link Configuration to Repo #
