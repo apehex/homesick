@@ -12,5 +12,8 @@ else
     alias ls='ls -lAh --group-directories-first'
 fi
 
-# 
+# list files 
 alias tree='tree -a --dirsfirst'
+
+# backup existing files when moving
+alias mv='mv -bv'
