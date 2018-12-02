@@ -12,7 +12,7 @@ DIR["documents"]="$HOME/documents"
 DIR["dotfiles"]="$HOME/.dotfiles"
 DIR["images"]="$HOME/images"
 DIR["music"]="$HOME/music"
-DIR["passwords"]="$HOME/.mickey/"
+DIR["passwords"]="$HOME/.mickey"
 DIR["workspace"]="$HOME/workspace"
 
 # Bucket name 
