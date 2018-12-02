@@ -32,6 +32,7 @@ doc-debian
 dpkg
 e2fslibs
 e2fsprogs
+feh
 file
 findutils
 firmware-iwlwifi
@@ -214,6 +215,7 @@ usbutils
 util-linux
 vim-common
 vim-tiny
+w3m
 wamerican
 wget
 whiptail
