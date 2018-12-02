@@ -24,3 +24,7 @@ fi
 # change the local : improves ls sorting
 export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
+
+# password manager
+export EDITOR=vim
+export PASSWORD_STORE_DIR=~/.mickey
