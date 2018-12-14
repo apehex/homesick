@@ -1,5 +1,6 @@
 build-simple-cdd
 bumpversion
+cmake
 git
 postgresql
 python3
