@@ -28,3 +28,6 @@ export LANG=C.UTF-8
 # password manager
 export EDITOR=vim
 export PASSWORD_STORE_DIR=~/.mickey
+
+# disable broken mouse buttons
+xmodmap .Xmodmap
