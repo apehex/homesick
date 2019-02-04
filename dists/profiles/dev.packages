@@ -1,4 +1,5 @@
 build-simple-cdd
+build-essential
 bumpversion
 cmake
 git
