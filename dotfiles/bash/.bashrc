@@ -97,3 +97,7 @@ if [ -f '/home/corto/lib/google-cloud-sdk/path.bash.inc' ]; then source '/home/c
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/corto/lib/google-cloud-sdk/completion.bash.inc' ]; then source '/home/corto/lib/google-cloud-sdk/completion.bash.inc'; fi
+
+# Install Ruby Gems to ~/.gem
+export GEM_HOME="$HOME/.gem"
+export PATH="$HOME/.gem/bin:$PATH"
