@@ -11,10 +11,13 @@ GCLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
 export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 
-# Pull the dotfiles #
-#####################
+# Update the local repo #
+#########################
+git pull
+
+# Install the dotfiles #
+########################
 if [[ "$PROFILE" = *"dot"* ]]; then
-    git pull
     rsync -avh --progress --inplace ./dotfiles/ ~/.dotfiles/
     if [ -d ~/.dotfiles/bin/bin/ ]; then
         for filename in ~/.dotfiles/bin/bin/* ; do
