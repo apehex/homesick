@@ -10,4 +10,5 @@ rsync -avh --progress --inplace ~/.dotfiles/ ./dotfiles/
 
 # Push the changes to github #
 ##############################
-git commit -a -m "config file update ($DATE)"
+git add -v dotfiles/
+#git commit -a -m "Update config file ($DATE)"
