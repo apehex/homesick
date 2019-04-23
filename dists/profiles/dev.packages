@@ -1,6 +1,9 @@
 build-essential
 bumpversion
 cmake
+containerd.io
+docker-ce
+docker-ce-cli
 git
 postgresql
 python3
