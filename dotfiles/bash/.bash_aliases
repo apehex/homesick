@@ -17,3 +17,6 @@ alias tree='tree -a --dirsfirst'
 
 # backup existing files when moving
 alias mv='mv -bv'
+
+# be verbose
+alias cp='cp -v'
