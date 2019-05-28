@@ -65,7 +65,7 @@ echo "deb http://packages.cloud.google.com/apt $GCLOUD_SDK_REPO main" | sudo tee
 ########################
 sudo apt update
 if [[ "$PROFILE" = *"core"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/core.packages  | tr "\n" " "); fi
-if [[ "$PROFILE" = *"tools"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/tools.packages  | tr "\n" " "); fi
+if [[ "$PROFILE" = *"admin"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/admin.packages  | tr "\n" " "); fi
 if [[ "$PROFILE" = *"dev"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/dev.packages  | tr "\n" " "); fi
 if [[ "$PROFILE" = *"media"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/media.packages  | tr "\n" " "); fi
 

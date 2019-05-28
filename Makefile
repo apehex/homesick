@@ -7,7 +7,7 @@ help:
 	@echo "install-dev..... install the dev packages"
 	@echo "install-dot..... pull the remote dotfiles and update the local configuration"
 	@echo "install-media... install the media packages"
-	@echo "install-tools... install the tools packages"
+	@echo "install-admin... install the administration  packages"
 
 backup:
 	bash ./backup.sh
@@ -28,5 +28,5 @@ install-dot:
 install-media:
 	bash ./install.sh media
 
-install-tools:
-	bash ./install.sh tools
+install-admin:
+	bash ./install.sh admin
