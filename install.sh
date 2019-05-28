@@ -46,6 +46,11 @@ if [[ "$PROFILE" = *"dev"* ]]; then
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
 fi
 
+# QGIS #
+########
+wget -q -O - https://qgis.org/downloads/qgis-2017.gpg.key | sudo apt-key add -
+echo "deb https://qgis.org/debian stretch main" | sudo tee /etc/apt/sources.list.d/qgis.list
+
 # Brave Browser #
 #################
 # wget https://s3-us-west-2.amazonaws.com/brave-apt/keys.asc | sudo apt-key add -
@@ -67,6 +72,7 @@ sudo apt update
 if [[ "$PROFILE" = *"core"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/core.packages  | tr "\n" " "); fi
 if [[ "$PROFILE" = *"admin"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/admin.packages  | tr "\n" " "); fi
 if [[ "$PROFILE" = *"dev"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/dev.packages  | tr "\n" " "); fi
+if [[ "$PROFILE" = *"gis"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/gis.packages  | tr "\n" " "); fi
 if [[ "$PROFILE" = *"media"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/media.packages  | tr "\n" " "); fi
 
 # Install pip packages #
