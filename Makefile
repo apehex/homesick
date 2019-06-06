@@ -9,6 +9,7 @@ help:
 	@echo "install-dot..... pull the remote dotfiles and update the local configuration"
 	@echo "install-gis..... install the GIS  packages"
 	@echo "install-media... install the media packages"
+	@echo "install-network. install the network packages"
 
 backup:
 	bash ./backup.sh
@@ -34,3 +35,6 @@ install-gis:
 
 install-media:
 	bash ./install.sh media
+
+install-network:
+	bash ./install.sh network

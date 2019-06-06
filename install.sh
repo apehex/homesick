@@ -51,6 +51,11 @@ fi
 wget -q -O - https://qgis.org/downloads/qgis-2017.gpg.key | sudo apt-key add -
 echo "deb https://qgis.org/debian stretch main" | sudo tee /etc/apt/sources.list.d/qgis.list
 
+# TOR #
+#######
+
+echo "deb http://deb.debian.org/debian stretch-backports main contrib" | sudo tee /etc/apt/sources.list.d/stretch-backports.list
+
 # Brave Browser #
 #################
 # wget https://s3-us-west-2.amazonaws.com/brave-apt/keys.asc | sudo apt-key add -
@@ -74,6 +79,7 @@ if [[ "$PROFILE" = *"admin"* ]]; then sudo apt-get install $(grep -vE "^\s*#" di
 if [[ "$PROFILE" = *"dev"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/dev.packages  | tr "\n" " "); fi
 if [[ "$PROFILE" = *"gis"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/gis.packages  | tr "\n" " "); fi
 if [[ "$PROFILE" = *"media"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/media.packages  | tr "\n" " "); fi
+if [[ "$PROFILE" = *"network"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/network.packages  | tr "\n" " "); fi
 
 # Install pip packages #
 ########################
