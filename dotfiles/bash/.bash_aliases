@@ -5,7 +5,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias dir='dir --color=auto'
     alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
+    alias grep='grep --color=auto -rnHo'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 else
@@ -19,4 +19,4 @@ alias tree='tree -a --dirsfirst'
 alias mv='mv -bv'
 
 # be verbose
-alias cp='cp -v'
+alias cp='cp -bv'
