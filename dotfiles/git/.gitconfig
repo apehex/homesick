@@ -4,3 +4,5 @@
 	email = apehex@protonmail.com
 [core]
 	excludesfile = /home/corto/.gitignore
+[branch "master"]
+	mergeoptions = --no-ff
