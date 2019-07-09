@@ -8,12 +8,14 @@
 
 # Directories to backup to the cloud 
 declare -A DIR
-DIR["documents"]="$HOME/documents"
-DIR["dotfiles"]="$HOME/.dotfiles"
-DIR["images"]="$HOME/images"
-DIR["music"]="$HOME/music"
-DIR["passwords"]="$HOME/.mickey"
-DIR["workspace"]="$HOME/workspace"
+SOURCE="$HOME/zoo"
+DIR["documents"]="$SOURCE/documents"
+DIR["dotfiles"]="$SOURCE/.dotfiles.gpg"
+DIR["images"]="$SOURCE/images"
+DIR["mickey"]="$SOURCE/.mickey.gpg"
+DIR["music"]="$SOURCE/music"
+DIR["videos"]="$SOURCE/videos"
+DIR["workspace"]="$SOURCE/workspace"
 
 # Bucket name 
 BUCKET=nunatak
