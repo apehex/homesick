@@ -81,6 +81,7 @@ if [[ "$PROFILE" = *"gis"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dist
 if [[ "$PROFILE" = *"media"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/media.packages  | tr "\n" " "); fi
 if [[ "$PROFILE" = *"network"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/network.packages  | tr "\n" " "); fi
 if [[ "$PROFILE" = *"radio"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/radio.packages  | tr "\n" " "); fi
+if [[ "$PROFILE" = *"security"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/security.packages  | tr "\n" " "); fi
 
 # Install pip packages #
 ########################
