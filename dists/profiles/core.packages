@@ -33,6 +33,8 @@ doc-debian
 dpkg
 e2fslibs
 e2fsprogs
+exfat-fuse
+exfat-utils
 feh
 file
 findutils
