@@ -18,7 +18,7 @@ backup:
 
 install: install-all
 
-install-all: install-admin install-core install-dev install-dot install-gis install-media install-network install-radio
+install-all: install-admin install-core install-dev install-dot install-gis install-media install-network install-radio install-security
 
 install-admin:
 	bash ./install.sh admin
