@@ -10,7 +10,6 @@
 declare -A dir
 SOURCE="$HOME/zoo"
 DIR["documents"]="$SOURCE/documents"
-DIR["dotfiles"]="$SOURCE/.dotfiles.gpg"
 DIR["images"]="$SOURCE/images"
 DIR["mickey"]="$SOURCE/.mickey.gpg"
 DIR["music"]="$SOURCE/music"
