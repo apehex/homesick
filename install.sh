@@ -36,8 +36,10 @@ fi
 
 # Sublime Text #
 ################
-wget -q -O - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+if [[ "$PROFILE" = *"dev"* ]]; then
+    wget -q -O - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+    echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+fi
 
 # Docker #
 ##########
@@ -48,13 +50,16 @@ fi
 
 # QGIS #
 ########
-wget -q -O - https://qgis.org/downloads/qgis-2017.gpg.key | sudo apt-key add -
-echo "deb https://qgis.org/debian stretch main" | sudo tee /etc/apt/sources.list.d/qgis.list
+if [[ "$PROFILE" = *"gis"* ]]; then
+    wget -q -O - https://qgis.org/downloads/qgis-2017.gpg.key | sudo apt-key add -
+    echo "deb https://qgis.org/debian stretch main" | sudo tee /etc/apt/sources.list.d/qgis.list
+fi
 
 # TOR #
 #######
-
-echo "deb http://deb.debian.org/debian stretch-backports main contrib" | sudo tee /etc/apt/sources.list.d/stretch-backports.list
+if [[ "$PROFILE" = *"network"* ]]; then
+    echo "deb http://deb.debian.org/debian stretch-backports main contrib" | sudo tee /etc/apt/sources.list.d/stretch-backports.list
+fi
 
 # Brave Browser #
 #################
@@ -68,8 +73,10 @@ echo "deb http://deb.debian.org/debian stretch-backports main contrib" | sudo te
 
 # Google Cloud #
 ################
-curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-echo "deb http://packages.cloud.google.com/apt $GCLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
+if [[ "$PROFILE" = *"admin"* ]]; then
+    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+    echo "deb http://packages.cloud.google.com/apt $GCLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
+fi
 
 # Install apt packages #
 ########################
