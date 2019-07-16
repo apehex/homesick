@@ -11,7 +11,7 @@ declare -A dir
 SOURCE="$HOME/zoo"
 DIR["documents"]="$SOURCE/documents"
 DIR["images"]="$SOURCE/images"
-DIR["mickey"]="$SOURCE/.mickey.gpg"
+DIR["mickey"]="$SOURCE/.mickey"
 DIR["music"]="$SOURCE/music"
 DIR["videos"]="$SOURCE/videos"
 DIR["workspace"]="$SOURCE/workspace"
