@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+#
+# Recover selected directories from a GoogleCloud Nearline bucket
+#
+# This is meant to be manually used, when necessary
+# It shouldn't be scheduled in cron.
+#
+
+# Directories to backup to the cloud 
+declare -A dir
+SOURCE="$HOME/zoo"
+DIR["documents"]="$SOURCE/documents"
+DIR["images"]="$SOURCE/images"
+DIR["mickey"]="$SOURCE/.mickey"
+DIR["music"]="$SOURCE/music"
+DIR["videos"]="$SOURCE/videos"
+DIR["workspace"]="$SOURCE/workspace"
+
+# Bucket name 
+bucket=nunatak
+
+# Backup specified directories!
+for i in "${!dir[@]}"; do
+    echo "= Recovering ${DIR[$i]} ="
+    gsutil -m rsync -r gs://$bucket/$i ${dir[$i]}
+done
