@@ -4,5 +4,6 @@ network-manager
 pass
 powertop
 rsync
+tree
 vim
 stow
