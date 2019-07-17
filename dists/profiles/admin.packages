@@ -1,6 +1,6 @@
 curl
 google-cloud-sdk
-nmcli
+network-manager
 pass
 powertop
 vim
