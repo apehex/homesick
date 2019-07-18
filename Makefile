@@ -23,7 +23,7 @@ install-all: install-admin install-desktop install-dev install-dot install-gis i
 install-admin:
 	bash ./install.sh admin
 
-install-dev:
+install-desktop:
 	bash ./install.sh desktop
 
 install-dev:
