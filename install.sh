@@ -64,7 +64,7 @@ fi
 # Brave Browser #
 #################
 if [[ "$PROFILE" = *"desktop"* ]]; then
-    wget https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key add -
+    wget -q -O - https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key add -
     echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ `lsb_release -sc` main" | sudo tee -a /etc/apt/sources.list.d/brave-browser.list
 fi
 
