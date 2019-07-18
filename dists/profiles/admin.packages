@@ -1,3 +1,4 @@
+apt-transport-https
 curl
 google-cloud-sdk
 network-manager
