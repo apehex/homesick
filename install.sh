@@ -3,7 +3,7 @@
 # Globals #
 ###########
 DATE=`date +%Y-%m-%d`
-PROFILE=${1:-"core"}
+PROFILE=${1:-"admin"}
 GCLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
 
 # Configure Linux #
@@ -81,7 +81,6 @@ fi
 # Install apt packages #
 ########################
 sudo apt update
-if [[ "$PROFILE" = *"core"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/core.packages  | tr "\n" " "); fi
 if [[ "$PROFILE" = *"admin"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/admin.packages  | tr "\n" " "); fi
 if [[ "$PROFILE" = *"dev"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/dev.packages  | tr "\n" " "); fi
 if [[ "$PROFILE" = *"gis"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/gis.packages  | tr "\n" " "); fi

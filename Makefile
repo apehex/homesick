@@ -4,7 +4,6 @@ help:
 	@echo "backup............. commit your local dotfiles to github"
 	@echo "install-all........ install everything"
 	@echo "install-admin...... install the administration  packages"
-	@echo "install-core....... install the core packages"
 	@echo "install-dev........ install the dev packages"
 	@echo "install-dot........ pull the remote dotfiles and update the local configuration"
 	@echo "install-gis........ install the GIS  packages"
@@ -18,13 +17,10 @@ backup:
 
 install: install-all
 
-install-all: install-admin install-core install-dev install-dot install-gis install-media install-network install-radio install-security
+install-all: install-admin install-dev install-dot install-gis install-media install-network install-radio install-security
 
 install-admin:
 	bash ./install.sh admin
-
-install-core:
-	bash ./install.sh core
 
 install-dev:
 	bash ./install.sh dev
