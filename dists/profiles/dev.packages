@@ -1,7 +1,6 @@
 build-essential
 bumpversion
 cmake
-docker
 git
 postgresql
 python3
@@ -11,7 +10,6 @@ python3-pip
 python3-reportbug
 python3-tk
 simple-cdd
-snapd
 sqlite
 sqlite3
 sublime-text

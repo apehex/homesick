@@ -94,4 +94,4 @@ if [[ "$PROFILE" = *"security"* ]]; then sudo apt-get install $(grep -vE "^\s*#"
 
 # Install snap packages #
 #########################
-if [[ "$PROFILE" = *"dev"* ]]; then sudo snap install heroku --classic; fi
+#if [[ "$PROFILE" = *"dev"* ]]; then sudo snap install heroku --classic; fi
