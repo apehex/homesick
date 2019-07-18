@@ -63,13 +63,17 @@ fi
 
 # Brave Browser #
 #################
-# wget https://s3-us-west-2.amazonaws.com/brave-apt/keys.asc | sudo apt-key add -
-# echo "deb [arch=amd64] https://s3-us-west-2.amazonaws.com/brave-apt `lsb_release -sc` main" | sudo tee -a /etc/apt/sources.list.d/brave-browser.list
+if [[ "$PROFILE" = *"desktop"* ]]; then
+    wget https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key add -
+    echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ `lsb_release -sc` main" | sudo tee -a /etc/apt/sources.list.d/brave-browser.list
+fi
 
 # Google Chrome #
 #################
-# wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-# echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+# if [[ "$PROFILE" = *"desktop"* ]]; then
+#     wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+#     echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+# fi
 
 # Google Cloud #
 ################
@@ -82,6 +86,7 @@ fi
 ########################
 sudo apt update
 if [[ "$PROFILE" = *"admin"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/admin.packages  | tr "\n" " "); fi
+if [[ "$PROFILE" = *"desktop"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/desktop.packages  | tr "\n" " "); fi
 if [[ "$PROFILE" = *"dev"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/dev.packages  | tr "\n" " "); fi
 if [[ "$PROFILE" = *"gis"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/gis.packages  | tr "\n" " "); fi
 if [[ "$PROFILE" = *"media"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/media.packages  | tr "\n" " "); fi
