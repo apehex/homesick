@@ -29,8 +29,8 @@ fi
 # Stow the dotfiles #
 #####################
 if [[ "$PROFILE" = *"dot"* ]]; then
-    for filename in ~/.dotfiles/*/ ; do
-        stow $filename
+    for filename in ~/* ; do
+	    stow --dir=$HOME/.dotfiles --target=$HOME --restow "$(basename $filename)"
     done
 fi
 
