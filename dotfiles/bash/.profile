@@ -30,4 +30,4 @@ export EDITOR=vim
 export PASSWORD_STORE_DIR=~/.mickey
 
 # disable broken mouse buttons
-xmodmap .Xmodmap
+xmodmap $HOME/.Xmodmap
