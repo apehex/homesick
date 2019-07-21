@@ -1,0 +1,2 @@
+ratpoison
+rxvt-unicode
