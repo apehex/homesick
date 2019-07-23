@@ -85,14 +85,14 @@ fi
 # Install apt packages #
 ########################
 sudo apt update
-if [[ "$PROFILE" = *"admin"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/admin.packages  | tr "\n" " "); fi
-if [[ "$PROFILE" = *"desktop"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/desktop.packages  | tr "\n" " "); fi
-if [[ "$PROFILE" = *"dev"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/dev.packages  | tr "\n" " "); fi
-if [[ "$PROFILE" = *"gis"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/gis.packages  | tr "\n" " "); fi
-if [[ "$PROFILE" = *"media"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/media.packages  | tr "\n" " "); fi
-if [[ "$PROFILE" = *"network"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/network.packages  | tr "\n" " "); fi
-if [[ "$PROFILE" = *"radio"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/radio.packages  | tr "\n" " "); fi
-if [[ "$PROFILE" = *"security"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/security.packages  | tr "\n" " "); fi
+if [[ "$PROFILE" = *"admin"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/apt.admin  | tr "\n" " "); fi
+if [[ "$PROFILE" = *"desktop"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/apt.desktop  | tr "\n" " "); fi
+if [[ "$PROFILE" = *"dev"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/apt.dev  | tr "\n" " "); fi
+if [[ "$PROFILE" = *"gis"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/apt.gis  | tr "\n" " "); fi
+if [[ "$PROFILE" = *"media"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/apt.media  | tr "\n" " "); fi
+if [[ "$PROFILE" = *"network"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/apt.network  | tr "\n" " "); fi
+if [[ "$PROFILE" = *"radio"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/apt.radio  | tr "\n" " "); fi
+if [[ "$PROFILE" = *"security"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/apt.security  | tr "\n" " "); fi
 
 # Install pip packages #
 ########################
