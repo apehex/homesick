@@ -31,5 +31,5 @@ EXCLUDES="$ARCHIVERS|$COMPILERS|$DATABASES|$LOGS|$VERSIONING|$VIM"
 # Backup specified directories!
 for i in "${!DIR[@]}"; do
     echo "= Backing ${DIR[$i]} ="
-    gsutil -m rsync -C -U -r -d -x $EXCLUDES ${DIR[$i]} gs://$BUCKET/$i
+    gsutil -m rsync -C -U -e ssh -r -d -x $EXCLUDES ${DIR[$i]} gs://$BUCKET/$i
 done

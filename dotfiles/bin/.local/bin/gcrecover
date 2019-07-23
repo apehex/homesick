@@ -22,5 +22,5 @@ bucket=nunatak
 # Backup specified directories!
 for i in "${!dir[@]}"; do
     echo "= Recovering ${DIR[$i]} ="
-    gsutil -m rsync -r gs://$bucket/$i ${dir[$i]}
+    gsutil -m rsync -e ssh -r gs://$bucket/$i ${dir[$i]}
 done
