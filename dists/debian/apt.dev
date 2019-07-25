@@ -1,6 +1,7 @@
 android-sdk-platform-tools
 build-essential
 bumpversion
+bundler
 cmake
 git
 postgresql
@@ -10,6 +11,7 @@ python3-minimal
 python3-pip
 python3-reportbug
 python3-tk
+ruby
 simple-cdd
 sqlite
 sqlite3
