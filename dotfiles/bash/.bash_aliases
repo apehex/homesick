@@ -20,3 +20,6 @@ alias mv='mv -bv'
 
 # be verbose
 alias cp='cp -bv'
+
+# keep aliases in sudo
+alias sudo='sudo '
