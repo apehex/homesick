@@ -93,10 +93,10 @@ if ! shopt -oq posix; then
 fi
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/corto/lib/google-cloud-sdk/path.bash.inc' ]; then source '/home/corto/lib/google-cloud-sdk/path.bash.inc'; fi
+if [ -f '$HOME/lib/google-cloud-sdk/path.bash.inc' ]; then source '$HOME/lib/google-cloud-sdk/path.bash.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/home/corto/lib/google-cloud-sdk/completion.bash.inc' ]; then source '/home/corto/lib/google-cloud-sdk/completion.bash.inc'; fi
+if [ -f '$HOME/lib/google-cloud-sdk/completion.bash.inc' ]; then source '$HOME/lib/google-cloud-sdk/completion.bash.inc'; fi
 
 # Install Ruby Gems to ~/.gem
 export GEM_HOME="$HOME/.gem"
