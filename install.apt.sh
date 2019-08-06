@@ -2,37 +2,8 @@
 
 # Globals #
 ###########
-DATE=`date +%Y-%m-%d`
 PROFILE=${1:-"admin"}
 GCLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
-
-# Configure Linux #
-###################
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-
-# Update the local repo #
-#########################
-git pull
-
-# Install the dotfiles #
-########################
-if [[ "$PROFILE" = *"dot"* ]]; then
-    rsync -avh --progress --inplace ./dotfiles/ ~/.dotfiles/
-    if [ -d ~/.dotfiles/bin/bin/ ]; then
-        for filename in ~/.dotfiles/bin/.local/bin/* ; do
-            chmod a+x $filename
-        done
-    fi
-fi
-
-# Stow the dotfiles #
-#####################
-if [[ "$PROFILE" = *"dot"* ]]; then
-    for filename in $HOME/.dotfiles/* ; do
-	    stow --dir=$HOME/.dotfiles --target=$HOME --restow "$(basename $filename)"
-    done
-fi
 
 # Sublime Text #
 ################
@@ -84,21 +55,18 @@ fi
 
 # Install apt packages #
 ########################
-sudo apt update
-if [[ "$PROFILE" = *"admin"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/apt.admin  | tr "\n" " "); fi
-if [[ "$PROFILE" = *"desktop"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/apt.desktop  | tr "\n" " "); fi
-if [[ "$PROFILE" = *"dev"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/apt.dev  | tr "\n" " "); fi
-if [[ "$PROFILE" = *"gis"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/apt.gis  | tr "\n" " "); fi
-if [[ "$PROFILE" = *"media"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/apt.media  | tr "\n" " "); fi
-if [[ "$PROFILE" = *"network"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/apt.network  | tr "\n" " "); fi
-if [[ "$PROFILE" = *"radio"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/apt.radio  | tr "\n" " "); fi
-if [[ "$PROFILE" = *"security"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/profiles/apt.security  | tr "\n" " "); fi
+if [[ "$PROFILE" = *"admin"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/debian/apt.admin  | tr "\n" " "); fi
+if [[ "$PROFILE" = *"desktop"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/debian/apt.desktop  | tr "\n" " "); fi
+if [[ "$PROFILE" = *"dev"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/debian/apt.dev  | tr "\n" " "); fi
+if [[ "$PROFILE" = *"gis"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/debian/apt.gis  | tr "\n" " "); fi
+if [[ "$PROFILE" = *"media"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/debian/apt.media  | tr "\n" " "); fi
+if [[ "$PROFILE" = *"network"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/debian/apt.network  | tr "\n" " "); fi
+if [[ "$PROFILE" = *"radio"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/debian/apt.radio  | tr "\n" " "); fi
+if [[ "$PROFILE" = *"security"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/debian/apt.security  | tr "\n" " "); fi
 
 # Install pip packages #
 ########################
-if [[ "$PROFILE" = *"dev"* ]]; then
-    pip3 install --user --upgrade pipenv
-fi
+if [[ "$PROFILE" = *"dev"* ]]; then pip3 install --user --upgrade pipenv; fi
 
 # Install snap packages #
 #########################

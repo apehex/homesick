@@ -1,5 +1,14 @@
 .PHONY: help backup install install-all install-core install-dev install-dot install-media install-tools
 
+release = $(shell lsb_release -i -s)
+
+install_script = install.apt.sh
+backup_script = backup.apt.sh
+ifneq ($(release), Debian)
+	install_script = install.pacman.sh
+	backup_script = backup.pacman.sh
+endif
+
 help:
 	@echo "backup............. commit your local dotfiles to github"
 	@echo "install-all........ install everything"
@@ -14,35 +23,35 @@ help:
 	@echo "install-security... install the cyber security packages"
 
 backup:
-	bash ./backup.sh
+	bash ./backup.stow.sh
 
 install: install-all
 
 install-all: install-admin install-desktop install-dev install-dot install-gis install-media install-network install-radio install-security
 
 install-admin:
-	bash ./install.sh admin
+	bash $(install_script) admin
 
 install-desktop:
-	bash ./install.sh desktop
+	bash $(install_script) desktop
 
 install-dev:
-	bash ./install.sh dev
+	bash $(install_script) dev
 
 install-dot:
-	bash ./install.sh dot
+	bash ./install.stow.sh
 
 install-gis:
-	bash ./install.sh gis
+	bash $(install_script) gis
 
 install-media:
-	bash ./install.sh media
+	bash $(install_script) media
 
 install-network:
-	bash ./install.sh network
+	bash $(install_script) network
 
 install-radio:
-	bash ./install.sh radio
+	bash $(install_script) radio
 
 install-security:
-	bash ./install.sh security
+	bash $(install_script) security
