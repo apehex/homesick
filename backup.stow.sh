@@ -4,9 +4,13 @@
 ###########
 DATE=`date +%Y-%m-%d`
 
-# Config Repo #
-###############
-rsync -avh --progress --inplace ~/.dotfiles/ ./dotfiles/
+# Copy user config #
+####################
+rsync -avh --progress $HOME/.dotfiles/ ./dotfiles/home/
+
+# Copy system config #
+######################
+sudo rsync -avh --progress --existing --update /etc/ ./dotfiles/etc/
 
 # Push the changes to github #
 ##############################
