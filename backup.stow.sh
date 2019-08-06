@@ -6,7 +6,7 @@ DATE=`date +%Y-%m-%d`
 
 # Copy user config #
 ####################
-rsync -avh --progress $HOME/.dotfiles/ ./dotfiles/home/
+rsync -avh --progress --update $HOME/.dotfiles/ ./dotfiles/home/
 
 # Copy system config #
 ######################
