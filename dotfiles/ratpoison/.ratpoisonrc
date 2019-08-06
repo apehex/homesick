@@ -18,7 +18,7 @@ set winliststyle row
 set winfmt %t
 
 # extract terminal background from Xdefaults to use as fgcolor
-exec _C=`xrdb -query | grep '^*.background' | sed 's/.*:[[:space:]]//'`; ratpoison -c "set fgcolor $_C"
+set fgcolor white
 set bgcolor black
 
 # add leading and trailing space around this now that the padding is small
