@@ -1,4 +1,4 @@
-.PHONY: help backup install install-all install-core install-dev install-dot install-media install-tools
+.PHONY: help backup backup-dot install install-all install-core install-dev install-dot install-media install-tools
 
 release = $(shell lsb_release -i -s)
 
@@ -10,7 +10,9 @@ ifneq ($(release), Debian)
 endif
 
 help:
-	@echo "backup............. commit your local dotfiles to github"
+	@echo "help............... show this help message"
+	@echo "backup............. commit your local system to github"
+	@echo "backup-dot......... commit your local configuration to github"
 	@echo "install-all........ install everything"
 	@echo "install-admin...... install the administration  packages"
 	@echo "install-desktop.... install the desktop packages"
@@ -22,7 +24,9 @@ help:
 	@echo "install-radio...... install the SDR packages"
 	@echo "install-security... install the cyber security packages"
 
-backup:
+backup: backup-dot
+
+backup-dot:
 	bash ./backup.stow.sh
 
 install: install-all
