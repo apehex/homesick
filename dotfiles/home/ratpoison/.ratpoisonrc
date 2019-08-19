@@ -1,13 +1,16 @@
+# create workspaces
+exec /usr/bin/rpws init 6 -a -k
+
 # call them as i sees them
 set winname title
 
 # keep the bar in the upper left displaying the active frame title
 set barborder 0
 set bargravity nw
-set barpadding 14 10
-set barinpadding 1
+set barpadding 0 0
+set barinpadding0 
 set barsticky on
-set font monospace:size=12
+set font monospace:size=14
 set ignorehints on
 set inputwidth 0
 set msgwait 3
@@ -33,15 +36,51 @@ set bwcolor gray
 # replace C-t with the win key
 escape Super_L
 
-# layout
+# help
+bind s-question help root
+
+# undo / redo
+bind s-u undo
+bind s-U redo
+
+# layout
+unbind C-s
+unbind C-S
 bind s split
-bind C-s split
+bind s-s split
 bind S hsplit
-bind C-S hsplit
+bind s-S hsplit
+
+# navigation
+unbind C-n
+unbind C-p
+bind s-n next
+bind s-p prev
+bind s-N nextscreen
+bind s-P prevscreen
+bind s-Left focusleft
+bind s-Right focusright
+bind s-Up focusup
+bind s-Down focusdown
+
+# workspaces
+bind s-ampersand exec rpws 1
+bind s-eacute exec rpws 2
+bind s-quotedbl exec rpws 3
+bind s-apostrophe exec rpws 4
+bind s-parenleft exec rpws 5
+bind s-minus exec rpws 6
+bind s-1 exec rpwsm1
+bind s-2 exec rpwsm2
+
+# size
+unbind C-r
+bind s-r
 
 # term
-bind c exec urxvt -tr
-bind C-c exec urxvt -tr
+unbind C-c
+bind c exec /usr/bin/urxvt -tr
+bind s-c exec /usr/bin/urxvt -tr
 
 # swap workspaces, but define it in 'top' to avoid having to prefix with C-a
 definekey top M-1 vselect 1
@@ -58,4 +97,4 @@ hsplit
 # allow machine-specific overrides of keys
 source .ratpoisonrc.local
 
-exec urxvt -tr
+exec /usr/bin/urxvt -tr
