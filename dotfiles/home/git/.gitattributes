@@ -1,0 +1,7 @@
+# Hex dump of a card ================================================
+*.dump binary diff=hex
+
+# Images ============================================================
+*.giff binary diff=exif
+*.jpg binary diff=exif
+*.png binary diff=exif
