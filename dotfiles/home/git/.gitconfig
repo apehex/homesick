@@ -3,7 +3,7 @@
 	mail = apehex@protonmail.com
 	email = apehex@protonmail.com
 [core]
-	excludesfile = /home/corto/.gitignore
+	excludesfile = $HOME/.gitignore
 [branch "master"]
 	mergeoptions = --no-ff
 [diff "hex"]
