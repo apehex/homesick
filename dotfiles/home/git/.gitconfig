@@ -6,3 +6,9 @@
 	excludesfile = /home/corto/.gitignore
 [branch "master"]
 	mergeoptions = --no-ff
+[diff "hex"]
+	textconv = hexdump -v -C
+[diff "word"]
+	textconv = docx2txt
+[diff "exif"]
+	textconv = exif
