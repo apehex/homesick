@@ -22,5 +22,8 @@ alias mv='mv -bv'
 # be verbose
 alias cp='cp -bv'
 
+# binary file editing in vim
+alias hexvim='vim -p -b -c "set binary" --servername HEXVIM'
+
 # keep aliases in sudo
 alias sudo='sudo '
