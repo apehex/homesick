@@ -22,8 +22,8 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # change the local : improves ls sorting
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
 
 # password manager
 export EDITOR=vim
