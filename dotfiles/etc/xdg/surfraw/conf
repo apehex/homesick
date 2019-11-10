@@ -28,11 +28,11 @@ prefix=/usr
 
 # graphical browser? defaults to yes for meatminds. text browser users can
 # work it out how to change it.
-defyn   SURFRAW_graphical		yes
+defyn   SURFRAW_graphical		no
 
 # name/path of text browser executable
 # e.g links, lynx, w3m
-def   SURFRAW_text_browser	www-browser
+def   SURFRAW_text_browser	/usr/bin/w3m
 
 # name/path of browser executable
 # e.g mozilla, netscape etc. Default to $BROWSER if no listed ones found
