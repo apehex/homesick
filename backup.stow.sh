@@ -10,7 +10,7 @@ rsync -avh --progress --existing --update $HOME/.dotfiles/ ./dotfiles/home/
 
 # Copy system config #
 ######################
-rsync -avh --progress --existing --update /etc/ ./dotfiles/etc/
+sudo rsync -avh --progress --existing --update --chown=$SUDO_USER:$SUDO_USER /etc/ ./dotfiles/etc/
 
 # Push the changes to github #
 ##############################
