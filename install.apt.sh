@@ -48,10 +48,10 @@ fi
 
 # Google Cloud #
 ################
-if [[ "$PROFILE" = *"admin"* ]]; then
-    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-    echo "deb http://packages.cloud.google.com/apt $GCLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
-fi
+# if [[ "$PROFILE" = *"admin"* ]]; then
+#     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+#     echo "deb http://packages.cloud.google.com/apt $GCLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
+# fi
 
 # Install apt packages #
 ########################
