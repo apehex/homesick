@@ -5,7 +5,7 @@ xterm*font: *-fixed-*-*-*-18-*
 URxvt*buffered: true
 URxvt*cursorBlink: true
 URxvt*underlineColor: yellow
-URxvt*font:  xft:inconsolata:size=18:antialias=true
+URxvt*font:  xft:inconsolata:size=14:antialias=true
 URxvt*depth: 32
 URxvt*borderless: 1
 URxvt*scrollBar: false
@@ -54,9 +54,10 @@ URxvt.matcher.button: 1
 #define S_blue          #268bd2
 #define S_cyan          #2aa198
 #define S_green         #859900
+#define S_white         #ffffd7
 
 *background:            S_base03
-*foreground:            S_base00
+*foreground:            S_white
 *cursorColor:           S_base1
 *pointerColorBackground:S_base01
 *pointerColorForeground:S_base1
