@@ -53,6 +53,13 @@ fi
 #     echo "deb http://packages.cloud.google.com/apt $GCLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
 # fi
 
+# MONGO DB #
+############
+if [[]]; then
+    wget -q -O - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
+    echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main" | sudo tee /etc/apt/sources.list.d/mongodb-org.list
+fi
+
 # Install apt packages #
 ########################
 if [[ "$PROFILE" = *"admin"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/debian/apt.admin  | tr "\n" " "); fi
