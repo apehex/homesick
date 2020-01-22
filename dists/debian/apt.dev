@@ -4,6 +4,7 @@ bumpversion
 bundler
 cmake
 git
+minify
 mongodb-org
 postgresql
 python3
