@@ -18,9 +18,10 @@ alias tree='tree -a --dirsfirst'
 
 # backup existing files when moving
 alias mv='mv -bv'
-
-# be verbose
 alias cp='cp -bv'
+
+# custom config folder
+alias mickey='PASSWORD_STORE_DIS=~/.mickey pass'
 
 # binary file editing in vim
 # alias hexvim='vim -p -b -c "set binary" --servername HEXVIM'
