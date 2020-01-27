@@ -3,6 +3,7 @@ build-essential
 bumpversion
 bundler
 cmake
+cookiecutter
 git
 minify
 mongodb-org
