@@ -4,6 +4,7 @@ bumpversion
 bundler
 cmake
 cookiecutter
+default-jdk
 git
 minify
 mongodb-org
