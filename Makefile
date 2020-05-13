@@ -1,4 +1,4 @@
-.PHONY: help backup backup-dot install install-all install-admin install-desktop install-dev install-dot install-gis install-media install-network install-radio install-security install-terminal install-ui
+.PHONY: help backup backup-dot install install-all install-admin install-desktop install-dev install-dot install-gis install-media install-network install-radio install-security install-terminal install-ui install-virtual
 
 release = $(shell lsb_release -i -s)
 
@@ -25,6 +25,7 @@ help:
 	@echo "install-security... install the cyber security packages"
 	@echo "install-terminal... install tools for the terminal"
 	@echo "install-ui......... install the window manager"
+	@echo "install-virtual.... install virtualization tools"
 
 backup: backup-dot
 
@@ -33,7 +34,7 @@ backup-dot:
 
 install: install-all
 
-install-all: install-admin install-desktop install-dev install-dot install-gis install-media install-network install-radio install-security install-terminal install-ui
+install-all: install-admin install-desktop install-dev install-dot install-gis install-media install-network install-radio install-security install-terminal install-ui install-virtual
 
 install-admin:
 	bash $(install_script) admin
@@ -67,3 +68,6 @@ install-terminal:
 
 install-ui:
 	bash $(install_script) ui
+
+install-virtual:
+	bash $(install_script) virtual

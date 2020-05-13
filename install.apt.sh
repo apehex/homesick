@@ -60,6 +60,13 @@ if [[ "$PROFILE" = *"dev" ]]; then
     echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main" | sudo tee /etc/apt/sources.list.d/mongodb-org.list
 fi
 
+# VIRTUALBOX #
+##############
+if [[ "$PROFILE" = *"virtual" ]]; then
+    wget -q -O - https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
+    echo "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian buster contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
+fi
+
 # Install apt packages #
 ########################
 if [[ "$PROFILE" = *"admin"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/debian/apt.admin | tr "\n" " "); fi
@@ -72,6 +79,7 @@ if [[ "$PROFILE" = *"radio"* ]]; then sudo apt-get install $(grep -vE "^\s*#" di
 if [[ "$PROFILE" = *"security"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/debian/apt.security | tr "\n" " "); fi
 if [[ "$PROFILE" = *"terminal"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/debian/apt.terminal | tr "\n" " "); fi
 if [[ "$PROFILE" = *"ui"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/debian/apt.ui | tr "\n" " "); fi
+if [[ "$PROFILE" = *"virtual"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/debian/apt.virtual | tr "\n" " "); fi
 
 # Install pip packages #
 ########################
