@@ -1,4 +1,4 @@
-.PHONY: help backup backup-dot install install-all install-core install-dev install-dot install-media install-tools
+.PHONY: help backup backup-dot install install-all install-admin install-desktop install-dev install-dot install-gis install-media install-network install-radio install-security install-terminal install-ui
 
 release = $(shell lsb_release -i -s)
 
@@ -23,6 +23,8 @@ help:
 	@echo "install-network.... install the network packages"
 	@echo "install-radio...... install the SDR packages"
 	@echo "install-security... install the cyber security packages"
+	@echo "install-terminal... install tools for the terminal"
+	@echo "install-ui......... install the window manager"
 
 backup: backup-dot
 
@@ -31,7 +33,7 @@ backup-dot:
 
 install: install-all
 
-install-all: install-admin install-desktop install-dev install-dot install-gis install-media install-network install-radio install-security
+install-all: install-admin install-desktop install-dev install-dot install-gis install-media install-network install-radio install-security install-terminal install-ui
 
 install-admin:
 	bash $(install_script) admin
@@ -59,3 +61,9 @@ install-radio:
 
 install-security:
 	bash $(install_script) security
+
+install-terminal:
+	bash $(install_script) terminal
+
+install-ui:
+	bash $(install_script) ui
