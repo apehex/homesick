@@ -1,0 +1,9 @@
+apt-transport-https
+curl
+pass
+pavucontrol
+powertop
+rsync
+tree
+vim
+stow
