@@ -20,6 +20,13 @@ alias tree='tree -a --dirsfirst'
 alias mv='mv -bv'
 alias cp='cp -bv'
 
+# overwrite files to prevent recovery
+alias shred='shred -zf'
+
+# hide user-agent
+alias wget='wget -U "noleak"'
+alias curl='curl --user-agent "noleak"'
+
 # custom config folder
 alias mickey='PASSWORD_STORE_DIR=~/.mickey pass'
 
