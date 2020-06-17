@@ -1,54 +1,130 @@
-" All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by
-" the call to :runtime you can find below.  If you wish to change any of those
-" settings, you should do it in this file (/etc/vim/vimrc), since debian.vim
-" will be overwritten everytime an upgrade of the vim packages is performed.
-" It is recommended to make changes after sourcing debian.vim since it alters
-" the value of the 'compatible' option.
+" Vundle -----------------------------------------------------------------------
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-" This line should not be removed as it ensures that various options are
-" properly set to work with the Vim-related packages available in Debian.
-runtime! debian.vim
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" Vim will load $VIMRUNTIME/defaults.vim if the user does not have a vimrc.
-" This happens after /etc/vim/vimrc(.local) are loaded, so it will override
-" any settings in these files.
-" If you don't want that to happen, uncomment the below line to prevent
-" defaults.vim from being loaded.
-" let g:skip_defaults_vim = 1
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree.git'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'xavierd/clang_complete'
 
-" Uncomment the next line to make Vim more Vi-compatible
-" NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
-" options, so any other options should be set AFTER setting 'compatible'.
-"set compatible
+call vundle#end()            " required
+" Vundle -----------------------------------------------------------------------
 
-" Vim5 and later versions support syntax highlighting. Uncommenting the next
-" line enables syntax highlighting by default.
+" file type and syntax highliting on
+filetype plugin indent on
 syntax on
 
-" If using a dark background within the editing area and syntax highlighting
-" turn on this option as well
-set background=dark
+" whitespaces
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+highlight ExtraWhitespace ctermbg=cyan guibg=cyan
+autocmd InsertLeave * redraw!
+match ExtraWhitespace /\s\+$\| \+\ze\t/
+autocmd BufWritePre * :%s/\s\+$//e
 
-" Uncomment the following to have Vim jump to the last position when
-" reopening a file
-"au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+" color scheme
+color leet2
 
-" Uncomment the following to have Vim load indentation rules and plugins
-" according to the detected filetype.
-"filetype plugin indent on
+" sessions
+noremap <F1> :mksession! .vim.session <cr>
+noremap <F2> :source .vim.session <cr>
+noremap <F3> :! rm .vim.session <cr>
 
-" The following are commented out as they cause vim to behave a lot
-" differently from regular Vi. They are highly recommended though.
-set showcmd		" Show (partial) command in status line.
-set showmatch		" Show matching brackets.
-set ignorecase		" Do case insensitive matching
-"set smartcase		" Do smart case matching
-"set incsearch		" Incremental search
-"set autowrite		" Automatically save before commands like :next and :make
-"set hidden		" Hide buffers when they are abandoned
-"set mouse=a		" Enable mouse usage (all modes)
+" for autoread to auto load
+au FocusGained,BufEnter * :silent! !
+au FocusLost,WinLeave * :silent! w
 
-" Source a global configuration file if available
-if filereadable("/etc/vim/vimrc.local")
-  source /etc/vim/vimrc.local
+" specific settings
+set fo+=t
+set t_Co=256
+set nocursorline
+set title
+set bs=2
+set noautoindent
+set ruler
+set shortmess=aoOTI
+set nocompatible
+set showmode
+set splitbelow
+set nomodeline
+set showcmd
+set showmatch
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set cinoptions=(0,m1,:1
+set tw=80
+set formatoptions=tcqro2
+set smartindent
+set laststatus=2
+set nomodeline
+set clipboard=unnamed
+set softtabstop=2
+set showtabline=1
+set sidescroll=5
+set scrolloff=4
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set foldmethod=marker
+set ttyfast
+set history=10000
+set hidden
+set colorcolumn=81
+set number
+set complete=.,w,b,u,t
+set completeopt=longest,menuone,preview
+set noswapfile
+set foldlevelstart=0
+set wildmenu
+set wildmode=list:longest,full
+set nowrap
+set statusline=%{getcwd()}\/\%f%=%-14.(%l,%c%V%)\ %P
+set autoread
+set conceallevel=2
+set concealcursor=vin
+
+" backup
+set undodir=~/.vim/tmp/undo//
+set backupdir=~/.vim/tmp/backup//
+set directory=~/.vim/tmp/swap//
+
+" make directories automatically if they don't already exist
+if !isdirectory(expand(&undodir))
+    call mkdir(expand(&undodir), "p")
 endif
+if !isdirectory(expand(&backupdir))
+    call mkdir(expand(&backupdir), "p")
+endif
+if !isdirectory(expand(&directory))
+    call mkdir(expand(&directory), "p")
+endif
+
+" close brackets
+:inoremap ( ()<Esc>i
+:inoremap < <><Esc>i
+:inoremap { {}<Esc>i
+:inoremap [ []<Esc>i
+:inoremap " ""<Esc>i
+:inoremap ' ''<Esc>i
+:inoremap ` ``<Esc>i
+
+" cursorline
+au WinLeave * set nocursorline
+au WinEnter * set cursorline
+set cursorline
+
+" clang stuff
+let g:clang_library_path='/usr/lib/'
+let g:clang_user_options='|| exit 0'
+let g:clang_complete_auto = 1
+let g:clang_compelte_macros=1
+let g:clang_complete_copen = 1
+let g:clang_debug = 1
+let g:clang_snippets=1
+let g:clang_conceal_snippets=1
+let g:clang_snippets_engine='clang_complete'
