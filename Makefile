@@ -1,4 +1,4 @@
-.PHONY: help backup backup-dot install install-all install-admin install-desktop install-dev install-dot install-gis install-media install-network install-radio install-security install-terminal install-ui install-virtual
+.PHONY: help backup backup-dot clean-system install install-all install-admin install-desktop install-dev install-dot install-gis install-media install-network install-radio install-security install-terminal install-ui install-virtual
 
 release = $(shell lsb_release -i -s)
 
@@ -13,6 +13,7 @@ help:
 	@echo "help............... show this help message"
 	@echo "backup............. commit your local system to github"
 	@echo "backup-dot......... commit your local configuration to github"
+	@echo "clean-system....... remove temporary files"
 	@echo "install-all........ install everything"
 	@echo "install-admin...... install the administration  packages"
 	@echo "install-desktop.... install the desktop packages"
@@ -31,6 +32,9 @@ backup: backup-dot
 
 backup-dot:
 	bash ./backup.stow.sh
+
+clean-system:
+	bash ./clean.archlinux.sh
 
 install: install-all
 
