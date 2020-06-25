@@ -1,5 +1,5 @@
 ! generic
-*foreground:                  #ffffff
+*foreground:                  #cccccc
 *background:                  #000000
 
 ! urxvt
