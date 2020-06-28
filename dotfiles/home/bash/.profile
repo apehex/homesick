@@ -25,8 +25,8 @@ fi
 export LD_PRELOAD=""
 
 # change the local : improves ls sorting
-export LC_ALL="C.UTF-8"
-export LANG="C.UTF-8"
+export LC_ALL="C"
+export LANG="C"
 
 # password manager
 export EDITOR="vim"
