@@ -1,6 +1,5 @@
 [user]
 	name = apehex
-	mail = apehex@protonmail.com
 	email = apehex@protonmail.com
 [core]
 	excludesfile = $HOME/.gitignore
