@@ -54,7 +54,7 @@ XTerm*highlightSelection:     true
 
 ! cursor
 Xcursor.theme:                Adwaita
-Xcursor.size:                 12
+Xcursor.size:                 14
 
 ! xft
 xft.antialias:                true
