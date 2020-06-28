@@ -12,7 +12,7 @@
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
+        . "$HOME/.bashrc"
     fi
 fi
 
@@ -21,13 +21,16 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+# no lib preload
+export LD_PRELOAD=""
+
 # change the local : improves ls sorting
-export LC_ALL=C.UTF-8
-export LANG=C.UTF-8
+export LC_ALL="C.UTF-8"
+export LANG="C.UTF-8"
 
 # password manager
-export EDITOR=vim
-export PASSWORD_STORE_DIR=~/.mickey
+export EDITOR="vim"
+export PASSWORD_STORE_DIR="~/.mickey"
 
 # disable broken mouse buttons
 xmodmap $HOME/.Xmodmap
