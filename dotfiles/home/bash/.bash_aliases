@@ -13,7 +13,7 @@ else
     alias ls='ls -lAh --group-directories-first'
 fi
 
-# list files 
+# list files
 alias tree='tree -a --dirsfirst'
 
 # backup existing files when moving
@@ -31,7 +31,10 @@ alias curl='curl --user-agent "noleak"'
 alias mickey='PASSWORD_STORE_DIR=~/.mickey pass'
 
 # binary file editing in vim
-# alias hexvim='vim -p -b -c "set binary" --servername HEXVIM'
+#alias hexvim='vim -p -b -c "set binary" --servername HEXVIM'
+
+# repeat most recent command with 'sudo' this time...
+alias ahhh='sudo $(history -p \!\!)'
 
 # keep aliases in sudo
 alias sudo='sudo '
