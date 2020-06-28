@@ -40,7 +40,7 @@ if [ -z "${chroot_dir:-}" ] && [ -r /etc/chroot_dir ]; then
 fi
 
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-    export PS1="\[$blue\][ \[$cyan\]\H \[$darkgrey\]\w\[$darkgrey\] \[$blue\]]\\[$darkgrey\]# \[$nc\]"
+    export PS1="\[$blue\][ \[$cyan\]\H \[$darkgrey\]\w\[$darkgrey\] \[$blue\]]\\[$darkgrey\]\$ \[$nc\]"
 else
     export PS1='${chroot_dir:+($chroot_dir)}\u@\h:\w\$ '
 fi
@@ -58,7 +58,6 @@ esac
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
