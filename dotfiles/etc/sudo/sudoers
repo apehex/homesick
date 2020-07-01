@@ -1,0 +1,44 @@
+#
+# This file MUST be edited with the 'visudo' command as root.
+#
+# Please consider adding local content in /etc/sudoers.d/ instead of
+# directly modifying this file.
+#
+# See the man page for details on how to write a sudoers file.
+#
+Defaults	env_reset
+Defaults	mail_badpass
+Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+# Host alias specification
+
+# User alias specification
+
+# Cmnd alias specification
+Cmnd_Alias	POWER		= /usr/sbin/shutdown, /usr/bin/halt/, /usr/bin/poweroff, /usr/bin/reboot, /usr/sbin/powertop
+Cmnd_Alias	STORAGE		= /usr/bin/mount -o nosuid\,nodev\,noexec, /usr/bin/umount
+Cmnd_Alias	UPDATE		= /usr/bin/apt update
+
+# User privilege specification
+root	    ALL=(ALL:ALL) ALL
+
+# Allow members of group sudo to execute any command
+%wheel    ALL=(ALL:ALL) ALL
+
+# Allow specific commands without pw
+%admin		ALL=(root) NOPASSWD: UPDATE
+%power		ALL=(root) NOPASSWD: POWER
+%storage	ALL=(root) STORAGE
+
+# See sudoers(5) for more information on "#include" directives:
+
+#includedir /etc/sudoers.d
+
+# Disable the timeout
+Defaults	passwd_timeout=0
+
+# Use vim as editor
+Defaults	editor=/usr/bin/vim, !env_editor
+
+# Insult the user when he fails to type pw
+Defaults	insults
