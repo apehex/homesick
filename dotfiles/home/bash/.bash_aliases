@@ -28,7 +28,7 @@ alias wget='wget -U "noleak"'
 alias curl='curl --user-agent "noleak"'
 
 # custom config folder
-alias mickey='PASSWORD_STORE_DIR=~/.mickey pass'
+alias mickey='PASSWORD_STORE_DIR=~/.mickey/ pass'
 
 # binary file editing in vim
 #alias hexvim='vim -p -b -c "set binary" --servername HEXVIM'

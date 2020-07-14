@@ -30,7 +30,7 @@ export LANG="C"
 
 # password manager
 export EDITOR="vim"
-export PASSWORD_STORE_DIR="~/.mickey"
+export PASSWORD_STORE_DIR="~/.mickey/"
 
 # disable broken mouse buttons
 xmodmap $HOME/.Xmodmap
