@@ -32,5 +32,8 @@ export LANG="en_US.UTF-8"
 export EDITOR="vim"
 export PASSWORD_STORE_DIR="~/.mickey/"
 
+# preferred terminal on I3
+export TERMINAL=rxvt-unicode
+
 # disable broken mouse buttons
 xmodmap $HOME/.Xmodmap
