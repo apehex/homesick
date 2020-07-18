@@ -33,7 +33,7 @@ export EDITOR="vim"
 export PASSWORD_STORE_DIR="~/.mickey/"
 
 # preferred terminal on I3
-export TERMINAL=rxvt-unicode
+export TERMINAL=urxvt
 
 # disable broken mouse buttons
 xmodmap $HOME/.Xmodmap
