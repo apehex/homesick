@@ -3,7 +3,7 @@
 *background:                  #000000
 
 ! urxvt
-urxvt.font:                   xft:xos4 Terminus:size=10:antialias=true:hinting=true
+urxvt.font:                   xft:xos4 Terminus:size=8:antialias=true:hinting=true
 urxvt.url-launcher:           /usr/bin/w3m
 urxvt.matcher.button:         1
 urxvt.matcher.pattern.0:      \\b([a-zA-Z]+:\/\/\\w[\\w-.@:]*|www\\.\\w[\\w-]*\\.\\w[\\w-.]*)(\/[^"' ()]*)?
