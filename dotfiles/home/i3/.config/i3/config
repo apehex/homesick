@@ -321,9 +321,9 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 
 # i3-gaps configuration
-gaps inner 0
-gaps outer 0
-smart_gaps on
+#gaps inner 0
+#gaps outer 0
+#smart_gaps on
 
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
