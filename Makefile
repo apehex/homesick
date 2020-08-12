@@ -32,7 +32,7 @@ help:
 backup: backup-dot
 
 backup-dot:
-	bash ./backup.stow.sh
+	bash ./backup.dotfiles.sh
 
 clean-system:
 	bash ./clean.archlinux.sh
@@ -54,7 +54,7 @@ install-dev:
 	bash $(install_script) dev
 
 install-dot:
-	bash ./install.stow.sh
+	bash ./install.dotfiles.sh
 
 install-gis:
 	bash $(install_script) gis
