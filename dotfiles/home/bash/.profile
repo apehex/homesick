@@ -37,3 +37,6 @@ export TERMINAL=urxvt
 
 # disable broken mouse buttons
 xmodmap $HOME/.Xmodmap
+
+# display a background
+. $HOME/.fehbg
