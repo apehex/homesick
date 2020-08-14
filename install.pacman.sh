@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Globals #
+#Globals #
 ###########
 PROFILE=${1:-"admin"}
 GCLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
@@ -12,7 +12,7 @@ if [[ "$PROFILE" = *"dev"* ]]; then
     # add pacman aur mirror
 fi
 
-# Docker #
+#Docker #
 ##########
 # if [[ "$PROFILE" = *"dev"* ]]; then
 #     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
@@ -32,7 +32,7 @@ if [[ "$PROFILE" = *"network"* ]]; then
    # add pacman aur mirror
 fi
 
-# Brave Browser #
+#Brave Browser #
 #################
 # if [[ "$PROFILE" = *"desktop"* ]]; then
 #     wget -q -O - https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key add -
