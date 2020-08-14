@@ -24,7 +24,7 @@ fi
 # no lib preload
 export LD_PRELOAD=""
 
-# change the local : improves ls sorting
+# change the local
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 
@@ -35,8 +35,19 @@ export PASSWORD_STORE_DIR="~/.mickey/"
 # preferred terminal on I3
 export TERMINAL=urxvt
 
-# disable broken mouse buttons
+# Install Ruby Gems to ~/.gem
+export GEM_HOME="$HOME/.gem"
+export PATH="$HOME/.gem/bin:$PATH"
+
+# Install pyenv in .local/lib
+export PYENV_ROOT="$HOME/.local/lib/pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+# Init pyenv
+eval "$(pyenv init -)"
+
+# Disable broken mouse buttons
 xmodmap $HOME/.Xmodmap
 
-# display a background
+# Display a background
 . $HOME/.fehbg
