@@ -73,6 +73,7 @@ if [[ "$PROFILE" = *"admin"* ]]; then sudo apt-get install $(grep -vE "^\s*#" di
 if [[ "$PROFILE" = *"desktop"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/debian/apt.desktop | tr "\n" " "); fi
 if [[ "$PROFILE" = *"dev"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/debian/apt.dev | tr "\n" " "); fi
 if [[ "$PROFILE" = *"gis"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/debian/apt.gis | tr "\n" " "); fi
+if [[ "$PROFILE" = *"live"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/debian/apt.live | tr "\n" " "); fi
 if [[ "$PROFILE" = *"media"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/debian/apt.media | tr "\n" " "); fi
 if [[ "$PROFILE" = *"network"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/debian/apt.network  | tr "\n" " "); fi
 if [[ "$PROFILE" = *"radio"* ]]; then sudo apt-get install $(grep -vE "^\s*#" dists/debian/apt.radio | tr "\n" " "); fi

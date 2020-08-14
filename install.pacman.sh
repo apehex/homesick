@@ -59,6 +59,7 @@ if [[ "$PROFILE" = *"admin"* ]]; then sudo pacman -S $(grep -vE "^\s*#" dists/ar
 if [[ "$PROFILE" = *"desktop"* ]]; then sudo pacman -S $(grep -vE "^\s*#" dists/archlinux/pacman.desktop | tr "\n" " "); fi
 if [[ "$PROFILE" = *"dev"* ]]; then sudo pacman -S $(grep -vE "^\s*#" dists/archlinux/pacman.dev | tr "\n" " "); fi
 if [[ "$PROFILE" = *"gis"* ]]; then sudo pacman -S $(grep -vE "^\s*#" dists/archlinux/pacman.gis | tr "\n" " "); fi
+if [[ "$PROFILE" = *"live"* ]]; then sudo pacman -S $(grep -vE "^\s*#" dists/archlinux/pacman.live | tr "\n" " "); fi
 if [[ "$PROFILE" = *"media"* ]]; then sudo pacman -S $(grep -vE "^\s*#" dists/archlinux/pacman.media | tr "\n" " "); fi
 if [[ "$PROFILE" = *"network"* ]]; then sudo pacman -S $(grep -vE "^\s*#" dists/archlinux/pacman.network  | tr "\n" " "); fi
 if [[ "$PROFILE" = *"radio"* ]]; then sudo pacman -S $(grep -vE "^\s*#" dists/archlinux/pacman.radio | tr "\n" " "); fi
