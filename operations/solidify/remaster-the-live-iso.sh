@@ -20,7 +20,13 @@ pacman-key --init
 pacman-key --populate archlinux
 pacman-key --populate blackarch
 
-# install additional packages
+# install additional packages (inside the chroot)
+mkdir -p ~/workspace
+cd ~/workspace
+git clone https://github.com/apehex/homesick.git
+cd homesick/
+make install-live
+make install-dotfiles
 
 # build the boot image
 pacman -Syu --force archiso linux

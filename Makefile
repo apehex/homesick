@@ -1,4 +1,4 @@
-.PHONY: help backup backup-dot clean-system configure-network install install-all install-admin install-desktop install-dev install-dot install-gis install-media install-network install-radio install-security install-terminal install-ui install-virtual
+.PHONY: help backup backup-dot clean-system configure-network install install-all install-admin install-desktop install-dev install-dot install-gis install-live install-media install-network install-radio install-security install-terminal install-ui install-virtual
 
 release = $(shell lsb_release -i -s)
 
@@ -21,6 +21,7 @@ help:
 	@echo "install-dev........ install the dev packages"
 	@echo "install-dot........ pull the remote dotfiles and update the local configuration"
 	@echo "install-gis........ install the GIS  packages"
+	@echo "install-live....... install the live packages"
 	@echo "install-media...... install the media packages"
 	@echo "install-network.... install the network packages"
 	@echo "install-radio...... install the SDR packages"
@@ -58,6 +59,9 @@ install-dot:
 
 install-gis:
 	bash $(install_script) gis
+
+install-live:
+	bash $(install_script) live
 
 install-media:
 	bash $(install_script) media
