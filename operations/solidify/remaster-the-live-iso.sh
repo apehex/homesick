@@ -58,3 +58,16 @@ mksquashfs squashfs-root airootfs.sfs
 # cleanup
 rm -r squashfs-root
 sha512sum airootfs.sfs > airootfs.sha512
+
+# make the new ISO
+iso_label="BLACKARCH_202005"
+xorriso -as mkisofs \
+    -iso-level 3 \
+    -full-iso9660-filenames \
+    -volid "${iso_label}" \
+    -eltorito-boot isolinux/isolinux.bin \
+    -eltorito-catalog isolinux/boot.cat \
+    -no-emul-boot -boot-load-size 4 -boot-info-table \
+    -isohybrid-mbr ~/workspace/blackarch/isolinux/isohdpfx.bin \
+    -output blackarch-custom.iso \
+    ~/workspace/blackarch
