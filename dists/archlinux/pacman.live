@@ -1,6 +1,6 @@
 lvm2
 pass
 powertop
-pipenv
 pyenv
+python-pipenv
 usbutils
