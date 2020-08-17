@@ -41,3 +41,6 @@ alias ahhh='sudo $(history -p \!\!)'
 
 # keep aliases in sudo
 alias sudo='sudo '
+
+# mirror a website
+alias mirror='wget -rNl inf -p -E -k -np -w 1 -e robots=off --no-cookies --random-wait'
