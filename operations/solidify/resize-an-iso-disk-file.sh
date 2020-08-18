@@ -12,3 +12,7 @@ fdisk -c -u /dev/loop0
 
 # extend the file system
 e2fsck -f /dev/loop0p2
+resize2fs /dev/loop0p2
+
+# remove the device
+losetup -d /dev/loop0
