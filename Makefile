@@ -1,4 +1,4 @@
-.PHONY: help backup backup-dot clean-system configure-network install install-all install-admin install-desktop install-dev install-dot install-gis install-live install-media install-network install-radio install-security install-terminal install-ui install-virtual
+.PHONY: help backup backup-dotfiles clean-system configure-network install install-all install-admin install-desktop install-dev install-dotfiles install-gis install-live install-media install-network install-radio install-security install-terminal install-ui install-virtual
 
 release = $(shell lsb_release -i -s)
 
@@ -12,14 +12,14 @@ endif
 help:
 	@echo "help............... show this help message"
 	@echo "backup............. commit your local system to github"
-	@echo "backup-dot......... commit your local configuration to github"
+	@echo "backup-dotfiles.... commit your local configuration to github"
 	@echo "clean-system....... remove temporary files"
 	@echo "configure-network.. configure the network"
 	@echo "install-all........ install everything"
 	@echo "install-admin...... install the administration  packages"
 	@echo "install-desktop.... install the desktop packages"
 	@echo "install-dev........ install the dev packages"
-	@echo "install-dot........ pull the remote dotfiles and update the local configuration"
+	@echo "install-dotfiles... pull the remote dotfiles and update the local configuration"
 	@echo "install-gis........ install the GIS  packages"
 	@echo "install-live....... install the live packages"
 	@echo "install-media...... install the media packages"
@@ -30,9 +30,9 @@ help:
 	@echo "install-ui......... install the window manager"
 	@echo "install-virtual.... install virtualization tools"
 
-backup: backup-dot
+backup: backup-dotfiles
 
-backup-dot:
+backup-dotfiles:
 	bash ./backup.dotfiles.sh
 
 clean-system:
@@ -43,7 +43,7 @@ configure-network:
 
 install: install-all
 
-install-all: install-admin install-desktop install-dev install-dot install-gis install-media install-network install-radio install-security install-terminal install-ui install-virtual
+install-all: install-admin install-desktop install-dev install-dotfiles install-gis install-media install-network install-radio install-security install-terminal install-ui install-virtual
 
 install-admin:
 	bash $(install_script) admin
@@ -54,7 +54,7 @@ install-desktop:
 install-dev:
 	bash $(install_script) dev
 
-install-dot:
+install-dotfiles:
 	bash ./install.dotfiles.sh
 
 install-gis:
