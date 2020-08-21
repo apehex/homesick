@@ -42,3 +42,6 @@ Defaults	editor=/usr/bin/vim, !env_editor
 
 # Insult the user when he fails to type pw
 Defaults	insults
+
+# Use the pw of the target user
+Defaults targetpw
