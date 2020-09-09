@@ -12,6 +12,13 @@ if [[ "$PROFILE" = *"dev"* ]]; then
     # add pacman aur mirror
 fi
 
+# Poetry #
+##########
+if [[ "$PROFILE" = *"dev"* ]]; then
+	curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+    poetry completions bash | sudo tee /etc/bash_completion.d/poetry.bash-completion
+fi
+
 #Docker #
 ##########
 # if [[ "$PROFILE" = *"dev"* ]]; then
