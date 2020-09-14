@@ -1,4 +1,4 @@
-# mail
+# mail #########################################################################
 # guerrillamail - http://grrmailb3fxpjbwm.onion/
 # guerrillamail - https://www.guerrillamail.com/
 # temp mail - https://tempmailaddress.com
@@ -9,6 +9,11 @@
 # list - https://gist.github.com/michenriksen/8710649
 # list of providers - https://www.reddit.com/r/onions/comments/6krt34/list_of_onion_email_providers/
 
-# xmpp
+# xmpp #########################################################################
 # list of servers - https://gist.github.com/dllud/a46d4a555e31dfeff6ad41dcf20729ac
 # pidgin - xmpp client
+# enable otr (of the record)
+
+# file sharing #################################################################
+# firefox-send - on the firefox account menu
+# onionshare - only when connected to tor
