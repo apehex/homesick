@@ -3,7 +3,7 @@
 #Globals #
 ###########
 PROFILE=${1:-"admin"}
-GCLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
+#GCLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
 
 # Sublime Text #
 ################
@@ -77,7 +77,7 @@ if [[ "$PROFILE" = *"virtual"* ]]; then sudo pacman -S $(grep -vE "^\s*#" dists/
 
 # Install pip packages #
 ########################
-if [[ "$PROFILE" = *"dev"* ]]; then pip3 install --user --upgrade pipenv; fi
+#if [[ "$PROFILE" = *"dev"* ]]; then pip3 install --user --upgrade pipenv; fi
 
 # Install snap packages #
 #########################

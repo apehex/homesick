@@ -91,7 +91,7 @@ if [[ "$PROFILE" = *"virtual"* ]]; then sudo apt-get install $(grep -vE "^\s*#" 
 
 # Install pip packages #
 ########################
-if [[ "$PROFILE" = *"dev"* ]]; then pip3 install --user --upgrade pipenv; fi
+#if [[ "$PROFILE" = *"dev"* ]]; then pip3 install --user --upgrade pipenv; fi
 
 # Install snap packages #
 #########################
