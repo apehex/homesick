@@ -3,7 +3,6 @@ lvm2
 pass
 powertop
 pyenv
-python-pipenv
 surfraw
 usbutils
 w3m
