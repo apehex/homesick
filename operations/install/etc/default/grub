@@ -1,0 +1,2 @@
+GRUB_PRELOAD_MODULES="part_gpt part_msdos ntfs mdraid09 mdraid1x lvm"
+GRUB_CMDLINE_LINUX="cryptdevice=UUID=f12121ac-da73-4fe6-99a1-6f82df61cf4b:sda_crypt root=UUID=b983db89-6be4-45aa-9745-b33f4dff90c5 resume=UUID=29e44f11-fc32-4eff-98e5-9bf26ae9136e"
