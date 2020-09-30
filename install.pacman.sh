@@ -8,14 +8,14 @@ PROFILE=${1:-"admin"}
 # Sublime Text #
 ################
 if [[ "$PROFILE" = *"dev"* ]]; then
-    wget -q -O - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-    # add pacman aur mirror
+    wget -q -O - https://download.sublimetext.com/sublimehq-pub.gpg | sudo pacman-key --add - && sudo pacman-key --lsign-key 8A8F901A
+    echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
 fi
 
 # Poetry #
 ##########
 if [[ "$PROFILE" = *"dev"* ]]; then
-	curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+    curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
     poetry completions bash | sudo tee /etc/bash_completion.d/poetry.bash-completion
 fi
 
@@ -29,7 +29,7 @@ fi
 # QGIS #
 ########
 if [[ "$PROFILE" = *"gis"* ]]; then
-    wget -q -O - https://qgis.org/downloads/qgis-2017.gpg.key | sudo apt-key add -
+    # wget -q -O - https://qgis.org/downloads/qgis-2017.gpg.key | sudo apt-key add -
     # add pacman aur mirror
 fi
 
@@ -55,13 +55,13 @@ fi
 
 # Google Cloud #
 ################
-if [[ "$PROFILE" = *"admin"* ]]; then
-    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-    # add pacman aur mirror
-fi
+# if [[ "$PROFILE" = *"admin"* ]]; then
+#     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+#     # add pacman aur mirror
+# fi
 
-# Install apt packages #
-########################
+# Install pacman packages #
+###########################
 if [[ "$PROFILE" = *"admin"* ]]; then sudo pacman -S $(grep -vE "^\s*#" dists/archlinux/pacman.admin | tr "\n" " "); fi
 if [[ "$PROFILE" = *"desktop"* ]]; then sudo pacman -S $(grep -vE "^\s*#" dists/archlinux/pacman.desktop | tr "\n" " "); fi
 if [[ "$PROFILE" = *"dev"* ]]; then sudo pacman -S $(grep -vE "^\s*#" dists/archlinux/pacman.dev | tr "\n" " "); fi
