@@ -4,6 +4,7 @@ bundler
 cookiecutter
 default-jdk
 git
+jupyter
 minify
 mongodb-org
 postgresql
