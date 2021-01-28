@@ -1,6 +1,6 @@
 lvm2
+mdadm
 pass
 powertop
-pipenv
 pyenv
 usbutils
