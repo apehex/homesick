@@ -1,5 +1,6 @@
 curl
 lvm2
+man-db
 mdadm
 pass
 pavucontrol
@@ -10,3 +11,4 @@ usbutils
 vim
 stow
 sudo
+wget
