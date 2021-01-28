@@ -29,15 +29,15 @@ fi
 # QGIS #
 ########
 if [[ "$PROFILE" = *"gis"* ]]; then
-    # wget -q -O - https://qgis.org/downloads/qgis-2017.gpg.key | sudo apt-key add -
-    # add pacman aur mirror
+    wget -q -O - https://qgis.org/downloads/qgis-2017.gpg.key | sudo apt-key add -
+    add pacman aur mirror
 fi
 
 # TOR #
 #######
-if [[ "$PROFILE" = *"network"* ]]; then
-   # add pacman aur mirror
-fi
+#if [[ "$PROFILE" = *"network"* ]]; then
+#    add pacman aur mirror
+#fi
 
 #Brave Browser #
 #################
