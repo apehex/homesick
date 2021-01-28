@@ -1,4 +1,6 @@
 curl
+lvm2
+mdadm
 pass
 pavucontrol
 powertop
