@@ -1,15 +1,13 @@
-apt-transport-https
 curl
 lvm2
 man-db
 mdadm
 pass
-pavucontrol
 powertop
 rsync
 tree
+usbutils
 vim
 stow
 sudo
-usbutils
 wget
