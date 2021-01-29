@@ -2,7 +2,7 @@
 	name = apehex
 	email = apehex@protonmail.com
 [core]
-	excludesfile = $HOME/.gitignore
+	excludesfile = $HOME/.config/git/ignore
 [branch "master"]
 	mergeoptions = --no-ff
 [diff "hex"]
