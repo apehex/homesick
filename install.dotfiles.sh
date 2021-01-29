@@ -7,7 +7,7 @@ DATE=`date +%Y-%m-%d`
 # Copy the user dotfiles #
 ##########################
 rsync -avh --progress --update ./dotfiles/home/ $HOME/.dotfiles/
-if [ -d ~/.dotfiles/bin/bin/ ]; then
+if [ -d ~/.dotfiles/bin/.local/bin/ ]; then
     for filename in ~/.dotfiles/bin/.local/bin/* ; do
         chmod a+x $filename
     done
