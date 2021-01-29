@@ -1,4 +1,6 @@
 curl
+dhcpcd
+iwd
 lvm2
 man-db
 mdadm
