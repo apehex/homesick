@@ -1,7 +1,5 @@
 android-sdk-platform-tools
 base-devel
-bundler
-cookiecutter
 git
 jdk-openjdk
 jupyter
@@ -10,9 +8,11 @@ mongodb-org
 postgresql
 pyenv
 python
+python-cookiecutter
 ruby
+ruby-bundler
 sqlite3
 sublime-text
 texinfo
-texlive
-texlive-lang-french
+texlive-langextra
+texlive-most
