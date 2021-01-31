@@ -12,9 +12,9 @@ DISABLE_AUTO_UPDATE=true
 source $HOME/.zsh/oh-my-zsh/oh-my-zsh.sh
 
 # ZSH history file
-HISTSIZE=100
-SAVEHIST=100
-HISTFILE=~/.zsh_history
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.cache/.zsh_history
 
 # Fancy auto-complete (with vi movement)
 autoload -Uz compinit
