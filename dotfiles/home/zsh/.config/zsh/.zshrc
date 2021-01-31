@@ -9,7 +9,7 @@ plugins=(git git-prompt archlinux nmap systemd)
 DISABLE_UPDATE_PROMPT=true
 DISABLE_AUTO_UPDATE=true
 
-source $HOME/.zsh/oh-my-zsh/oh-my-zsh.sh
+source $ZDOTDIR/oh-my-zsh/oh-my-zsh.sh
 
 # ZSH history file
 HISTSIZE=1000
