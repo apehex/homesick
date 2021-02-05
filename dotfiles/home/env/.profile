@@ -36,8 +36,8 @@ export PASSWORD_STORE_DIR="~/.mickey/"
 export TERMINAL=urxvt
 
 # install Ruby Gems to ~/.gem
-export GEM_HOME="$HOME/.gem"
-export PATH="$HOME/.gem/bin:$PATH"
+export GEM_HOME="$HOME/.local/share/gem"
+export PATH="$HOME/.local/share/gem/bin:$PATH"
 
 # install pyenv in .local/lib
 export PYENV_ROOT="$HOME/.local/lib/pyenv"
