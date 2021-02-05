@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # encrypt using the key associated with
 OWNER=apehex@protonmail.com
 
