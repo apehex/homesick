@@ -46,6 +46,9 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 # link to poetry
 export PATH="$HOME/.poetry/bin:$PATH"
 
+# go lang modules & stuff
+export GOPATH="$HOME/.local/share/go"
+
 # Init pyenv
 eval "$(pyenv init -)"
 
