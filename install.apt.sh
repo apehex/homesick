@@ -3,7 +3,6 @@
 # Globals #
 ###########
 PROFILE=${1:-"admin"}
-GCLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
 
 # Sublime Text #
 ################
@@ -51,13 +50,6 @@ fi
 # if [[ "$PROFILE" = *"desktop"* ]]; then
 #     wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 #     echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
-# fi
-
-# Google Cloud #
-################
-# if [[ "$PROFILE" = *"admin"* ]]; then
-#     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-#     echo "deb http://packages.cloud.google.com/apt $GCLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
 # fi
 
 # MONGO DB #
