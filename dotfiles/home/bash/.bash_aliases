@@ -2,6 +2,7 @@
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='LC_ALL=C ls -lAh --color=auto --group-directories-first'
+    alias tree='LC_ALL=C tree -a -C -L 2 --dirfirst'
     alias dir='dir --color=auto'
     alias vdir='vdir --color=auto'
 
@@ -10,14 +11,12 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 else
-    alias ls='ls -lAh --group-directories-first'
+    alias ls='LC_ALL=C ls -lAh --group-directories-first'
+    alias tree='LC_ALL=C tree -a -L 2 --dirfirst'
 fi
 
 # allow non ascii characters
 alias subl='LANG=en_US.UTF-8 LC_CTYPE=en_US.UTF-8 subl'
-
-# list files
-alias tree='tree -a --dirsfirst'
 
 # backup existing files when moving
 alias mv='mv -bv'
