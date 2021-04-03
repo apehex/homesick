@@ -22,6 +22,9 @@ alias subl='LANG=en_US.UTF-8 LC_CTYPE=en_US.UTF-8 subl'
 alias mv='mv -bv'
 alias cp='cp -bv'
 
+# short and readable
+alias du='du -h -d 1'
+
 # overwrite files to prevent recovery
 alias shred='shred -zf'
 
