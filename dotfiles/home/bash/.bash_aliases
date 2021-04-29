@@ -46,3 +46,6 @@ alias sudo='sudo '
 
 # mirror a website
 alias mirror='wget -rNl inf -p -E -k -np -w 1 -e robots=off --no-cookies --random-wait'
+
+# neo4j
+alias neo4j='NEO4J_HOME=/usr/share/java/neo4j neo4j'
