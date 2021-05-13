@@ -1,0 +1,84 @@
+from: markdown+emoji # reader: may be used instead of from:
+to: html5 # writer: may be used instead of to:
+
+output-file: # leave blank for output to stdout:
+input-files: # leave blank for input from stdin, use [] for no input:
+
+#defaults: # Includes, searched in the working directory then in the defaults subdirectory of the user data directory.
+
+standalone: true
+self-contained: false
+
+variables: # note that structured variables may be specified:
+  documentclass: book
+  classoption:
+    - twosides
+    - draft
+
+#metadata: # metadata values specified here are parsed as literal
+#  author:
+#  - apehex
+
+# Note that these take files, not their contents:
+include-before-body: []
+include-after-body: []
+include-in-header: []
+resource-path: ["."]
+
+verbosity: INFO # ERROR, WARNING, or INFO
+log-file: log.json
+
+cite-method: biblatex # citeproc, natbib, or biblatex
+
+top-level-division: chapter # part, chapter, section, or default:
+
+pdf-engine: pdflatex
+pdf-engine-opts:
+- "-shell-escape"
+
+wrap: auto # auto, preserve, or none
+columns: 78
+dpi: 72
+
+extract-media: mediadir
+
+table-of-contents: true
+toc-depth: 2
+number-sections: false
+number-offset: [0,0,0,0,0,0] # a list of offsets at each heading level
+shift-heading-level-by: 1 # toc: may also be used instead of table-of-contents:
+section-divs: true
+identifier-prefix: foo
+title-prefix: ""
+strip-empty-paragraphs: true
+eol: lf # lf, crlf, or native
+strip-comments: false
+indented-code-classes: []
+ascii: true
+default-image-extension: ".jpg"
+
+listings: false # or you may use syntax-definition: with a single value
+
+tab-stop: 8
+preserve-tabs: true
+
+incremental: false
+slide-level: 2
+
+reference-links: true
+reference-location: block # block, section, or document
+markdown-headings: setext
+
+track-changes: accept # accept, reject, or all
+
+html-q-tags: false
+css:
+- github.css
+
+request-headers: # A list of two-element lists
+- ["User-Agent", "Mozilla/5.0"]
+
+fail-if-warnings: false
+dump-args: false
+ignore-args: false
+trace: false
