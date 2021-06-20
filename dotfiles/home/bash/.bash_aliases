@@ -25,6 +25,9 @@ alias cp='cp -bv'
 # short and readable
 alias du='du -h -d 1'
 
+# fix locale issue
+alias trid='LC_ALL=C trid'
+
 # overwrite files to prevent recovery
 alias shred='shred -zf'
 
