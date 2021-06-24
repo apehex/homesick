@@ -51,7 +51,7 @@ export GOPATH="$HOME/.local/share/go"
 export PATH="$GOPATH/bin:$PATH"
 
 # Init pyenv
-eval "$(pyenv init -)"
+eval "$(pyenv init --path)"
 
 # Disable broken mouse buttons
 xmodmap $HOME/.Xmodmap
