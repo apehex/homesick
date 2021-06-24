@@ -72,3 +72,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# load pyenv into the shell
+eval "$(pyenv init -)"
