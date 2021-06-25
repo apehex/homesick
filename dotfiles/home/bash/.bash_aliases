@@ -10,6 +10,8 @@ if [ -x /usr/bin/dircolors ]; then
     alias rgrep='grep --color=auto -rHo'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
+
+    alias nmap='grc nmap'
 else
     alias ls='LC_ALL=C ls -lisa --group-directories-first'
     alias tree='LC_ALL=C tree -a -L 2 --dirsfirst'
