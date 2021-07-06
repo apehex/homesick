@@ -57,4 +57,4 @@ eval "$(pyenv init --path)"
 xmodmap $HOME/.Xmodmap
 
 # Display a background
-. $HOME/.fehbg
+. $HOME/.local/share/feh/.fehbg
