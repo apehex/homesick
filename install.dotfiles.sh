@@ -21,4 +21,4 @@ done
 
 # Copy the system dotfiles #
 ############################
-sudo rsync -avh --progress --update --existing ./dotfiles/etc/ /etc/
+#sudo rsync -avh --progress --update --existing ./dotfiles/etc/ /etc/
