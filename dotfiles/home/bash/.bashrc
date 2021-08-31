@@ -7,9 +7,13 @@
 
 # colors
 darkgrey="$(tput bold ; tput setaf 0)"
-white="$(tput bold ; tput setaf 7)"
+red="$(tput bold ; tput setaf 1)"
+green="$(tput bold ; tput setaf 2)"
+yellow="$(tput bold ; tput setaf 3)"
 blue="$(tput bold; tput setaf 4)"
+magenta="$(tput bold ; tput setaf 5)"
 cyan="$(tput bold; tput setaf 6)"
+white="$(tput bold ; tput setaf 7)"
 nc="$(tput sgr0)"
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -40,9 +44,16 @@ if [ -z "${chroot_dir:-}" ] && [ -r /etc/chroot_dir ]; then
 fi
 
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-    export PS1="\[$blue\][ \[$cyan\]\H \[$darkgrey\]\w\[$darkgrey\] \[$blue\]]\\[$darkgrey\]\$ \[$nc\]"
+    PS1_UPPER_ARROW="\[$cyan\]\342\224\214\342\224\200["
+    PS1_USER_HOST="\[$magenta\]\u\[$cyan\]@\[$darkgrey\]\H"
+    PS1_LINK="\[$cyan\]]\342\224\200["
+    PS1_WD="\[$magenta\]\w"
+    PS1_LOWER_ARROW="\[$cyan\]]\n\[$cyan\]\342\224\224\342\224\200\342\224\200\342\225\274 ["
+    PS1_BOX="\[$darkgrey\]??"
+    PS1_END="\[$cyan\]]\$ \[$nc\]"
+    export PS1="${PS1_UPPER_ARROW}${PS1_USER_HOST}${PS1_LINK}${PS1_WD}${PS1_LOWER_ARROW}${PS1_BOX}${PS1_END}"
 else
-    export PS1='${chroot_dir:+($chroot_dir)}\u@\h:\w\$ '
+    PS1='┌──[\u@\h]─[\w]\n└──╼ \$ '
 fi
 
 # If this is an xterm set the title to user@host:dir
