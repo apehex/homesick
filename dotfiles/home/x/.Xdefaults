@@ -24,9 +24,9 @@ urxvt.scrollWithBuffer:       false
 urxvt.scrollstyle:            plain
 urxvt.secondaryScroll:        false
 urxvt.xftAntialias:           true
-!urxvt.color4:                 RoyalBlue
+!urxvt.color4:                RoyalBlue
 urxvt.color12:                RoyalBlue
-urxvt.matcher.rend.0:         fg6
+urxvt.matcher.rend.0:         Bold fg7
 urxvt.cursorBlink:            false
 urxvt.cursorColor:            #5f8fff
 urxvt.mapAlert:               true
