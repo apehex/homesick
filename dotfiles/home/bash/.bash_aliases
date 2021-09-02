@@ -54,3 +54,6 @@ alias mirror='wget -rNl inf -p -E -k -np -w 1 -e robots=off --no-cookies --rando
 
 # neo4j
 alias neo4j='NEO4J_HOME=/usr/share/java/neo4j neo4j'
+
+# netcat
+alias nc='ncat'
