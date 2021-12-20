@@ -2,7 +2,7 @@
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='LC_ALL=C ls -lisa --color=auto --group-directories-first'
-    alias tree='LC_ALL=C tree -a -C -L 2 --dirsfirst'
+    alias tree='LC_ALL=C tree -a -h -C -L 2 --dirsfirst'
     alias dir='dir --color=auto'
     alias vdir='vdir --color=auto'
 
@@ -14,7 +14,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias nmap='grc nmap'
 else
     alias ls='LC_ALL=C ls -lisa --group-directories-first'
-    alias tree='LC_ALL=C tree -a -L 2 --dirsfirst'
+    alias tree='LC_ALL=C tree -a -h -L 2 --dirsfirst'
 fi
 
 # allow non ascii characters
