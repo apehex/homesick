@@ -1,7 +1,7 @@
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='LC_ALL=C ls -lisa --color=auto --group-directories-first'
+    alias ls='LC_ALL=C ls -lisah --color=auto --group-directories-first'
     alias tree='LC_ALL=C tree -a -h -C -L 2 --dirsfirst'
     alias dir='dir --color=auto'
     alias vdir='vdir --color=auto'
@@ -13,7 +13,7 @@ if [ -x /usr/bin/dircolors ]; then
 
     alias nmap='grc nmap'
 else
-    alias ls='LC_ALL=C ls -lisa --group-directories-first'
+    alias ls='LC_ALL=C ls -lisah --group-directories-first'
     alias tree='LC_ALL=C tree -a -h -L 2 --dirsfirst'
 fi
 
