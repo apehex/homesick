@@ -8,7 +8,6 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree.git'
-Plugin 'davidhalter/jedi-vim'
 Plugin 'xavierd/clang_complete'
 
 call vundle#end()            " required
