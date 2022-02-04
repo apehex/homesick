@@ -1,18 +1,3 @@
-" Vundle -----------------------------------------------------------------------
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree.git'
-Plugin 'xavierd/clang_complete'
-
-call vundle#end()            " required
-" Vundle -----------------------------------------------------------------------
-
 " file type and syntax highliting on
 filetype plugin indent on
 syntax on
@@ -116,14 +101,3 @@ endif
 au WinLeave * set nocursorline
 au WinEnter * set cursorline
 set cursorline
-
-" clang stuff
-let g:clang_library_path='/usr/lib/'
-let g:clang_user_options='|| exit 0'
-let g:clang_complete_auto = 1
-let g:clang_compelte_macros=1
-let g:clang_complete_copen = 1
-let g:clang_debug = 1
-let g:clang_snippets=1
-let g:clang_conceal_snippets=1
-let g:clang_snippets_engine='clang_complete'
