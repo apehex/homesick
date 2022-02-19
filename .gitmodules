@@ -1,4 +1,0 @@
-[submodule "dists/blackarch"]
-	path = dists/blackarch
-	url = https://github.com/apehex/blackarch-iso.git
-	branch = master
