@@ -102,11 +102,11 @@ bindsym $modkey+a focus parent
 #bindsym $modkey+d focus child
 
 # move the currently focused window to the scratchpad
-bindsym $modkey+Shift+minus move scratchpad
+# bindsym $modkey+Shift+minus move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
-bindsym $modkey+minus scratchpad show
+# bindsym $modkey+minus scratchpad show
 
 # Enable the setion below to fetch all the colors from Xresources
 #set_from_resource $xforeground foreground
