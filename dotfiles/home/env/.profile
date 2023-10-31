@@ -50,6 +50,9 @@ export PATH="$HOME/.poetry/bin:$PATH"
 export GOPATH="$HOME/.local/share/go"
 export PATH="$GOPATH/bin:$PATH"
 
+# rust crates
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # setup nvm
 export NVM_DIR="$HOME/.local/share/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
