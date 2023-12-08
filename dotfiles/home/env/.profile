@@ -53,6 +53,12 @@ export PATH="$GOPATH/bin:$PATH"
 # rust crates
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# foundry
+export PATH="$PATH:/home/gully/.local/share//foundry/bin"
+
+# heimdall-rs
+export PATH="$PATH:/home/gully/.local/share/bifrost/bin"
+
 # setup nvm
 export NVM_DIR="$HOME/.local/share/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -65,4 +71,4 @@ eval "$(pyenv init -)"
 xmodmap $HOME/.Xmodmap
 
 # Display a background
-. $HOME/.local/share/feh/.fehbg
+# . $HOME/.local/share/feh/.fehbg
