@@ -33,6 +33,10 @@ set $down k
 set $left j
 set $right l
 
+# move windows between monitors
+bindsym $modkey+Shift+j move container to output left
+bindsym $modkey+Shift+l move container to output right
+
 # use Mouse+$modkey to drag floating windows to their wanted position
 floating_modifier $modkey
 
