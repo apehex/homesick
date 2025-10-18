@@ -39,10 +39,6 @@ export TERMINAL=urxvt
 export GEM_HOME="$HOME/.local/share/gem"
 export PATH="$HOME/.local/share/gem/bin:$PATH"
 
-# install pyenv in .local/lib
-export PYENV_ROOT="$HOME/.local/lib/pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-
 # go lang modules & stuff
 export GOPATH="$HOME/.local/share/go"
 export PATH="$GOPATH/bin:$PATH"
@@ -60,9 +56,6 @@ export PATH="$PATH:/home/gully/.local/share/bifrost/bin"
 export NVM_DIR="$HOME/.local/share/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Init pyenv
-eval "$(pyenv init -)"
 
 # Disable broken mouse buttons
 xmodmap $HOME/.Xmodmap
