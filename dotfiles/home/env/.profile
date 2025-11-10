@@ -35,6 +35,10 @@ export PASSWORD_STORE_DIR="~/.mickey/"
 # preferred terminal on I3
 export TERMINAL=urxvt
 
+# handles desktop events
+export XDG_CURRENT_DESKTOP=i3
+export XDG_SESSION_TYPE=x11
+
 # install Ruby Gems to ~/.gem
 export GEM_HOME="$HOME/.local/share/gem"
 export PATH="$HOME/.local/share/gem/bin:$PATH"
