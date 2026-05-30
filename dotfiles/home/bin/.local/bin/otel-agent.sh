@@ -20,6 +20,7 @@ Usage:
   agent-otelcol start
   agent-otelcol stop
   agent-otelcol restart
+  agent-otelcol clean
   agent-otelcol logs
   agent-otelcol status
 
@@ -135,6 +136,10 @@ case "${1:-}" in
     stop_collector
     cleanup_containers
     start_collector
+    ;;
+  clean)
+    require_docker
+    cleanup_containers
     ;;
   logs)
     require_docker
