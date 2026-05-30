@@ -1,12 +1,12 @@
 receivers:
-  otlp_grpc/codex:
+  otlp/codex:
     protocols:
       grpc:
         endpoint: 127.0.0.1:4317
       http:
         endpoint: 127.0.0.1:4318
 
-  otlp_grpc/gemini:
+  otlp/gemini:
     protocols:
       grpc:
         endpoint: 127.0.0.1:4327
@@ -60,7 +60,7 @@ exporters:
     format: json
 
   # Live forwarding to your laptop through the SSH reverse tunnel.
-  otlp/laptop:
+  otlp_grpc/local:
     endpoint: 127.0.0.1:14317
     tls:
       insecure: true
@@ -73,29 +73,29 @@ service:
     traces/codex:
       receivers: [otlp/codex]
       processors: [resource/codex, batch]
-      exporters: [file/codex_traces, otlp/laptop]
+      exporters: [file/codex_traces, otlp_grpc/local]
 
     logs/codex:
       receivers: [otlp/codex]
       processors: [resource/codex, batch]
-      exporters: [file/codex_logs, otlp/laptop]
+      exporters: [file/codex_logs, otlp_grpc/local]
 
     metrics/codex:
       receivers: [otlp/codex]
       processors: [resource/codex, batch]
-      exporters: [file/codex_metrics, otlp/laptop]
+      exporters: [file/codex_metrics, otlp_grpc/local]
 
     traces/gemini:
       receivers: [otlp/gemini]
       processors: [resource/gemini, batch]
-      exporters: [file/gemini_traces, otlp/laptop]
+      exporters: [file/gemini_traces, otlp_grpc/local]
 
     logs/gemini:
       receivers: [otlp/gemini]
       processors: [resource/gemini, batch]
-      exporters: [file/gemini_logs, otlp/laptop]
+      exporters: [file/gemini_logs, otlp_grpc/local]
 
     metrics/gemini:
       receivers: [otlp/gemini]
       processors: [resource/gemini, batch]
-      exporters: [file/gemini_metrics, otlp/laptop]
+      exporters: [file/gemini_metrics, otlp_grpc/local]
