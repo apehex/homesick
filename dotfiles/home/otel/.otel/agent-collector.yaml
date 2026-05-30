@@ -1,12 +1,12 @@
 receivers:
-  otlp/codex:
+  otlp_grpc/codex:
     protocols:
       grpc:
         endpoint: 127.0.0.1:4317
       http:
         endpoint: 127.0.0.1:4318
 
-  otlp/gemini:
+  otlp_grpc/gemini:
     protocols:
       grpc:
         endpoint: 127.0.0.1:4327
