@@ -1,0 +1,101 @@
+receivers:
+  otlp/codex:
+    protocols:
+      grpc:
+        endpoint: 127.0.0.1:4317
+      http:
+        endpoint: 127.0.0.1:4318
+
+  otlp/gemini:
+    protocols:
+      grpc:
+        endpoint: 127.0.0.1:4327
+      http:
+        endpoint: 127.0.0.1:4328
+
+processors:
+  resource/codex:
+    attributes:
+      - key: agent.provider
+        value: codex
+        action: upsert
+      - key: service.name
+        value: codex-cli
+        action: upsert
+
+  resource/gemini:
+    attributes:
+      - key: agent.provider
+        value: gemini
+        action: upsert
+      - key: service.name
+        value: gemini-cli
+        action: upsert
+
+  batch: {}
+
+exporters:
+  file/codex_traces:
+    path: /telemetry/codex/traces.json
+    format: json
+
+  file/codex_logs:
+    path: /telemetry/codex/logs.json
+    format: json
+
+  file/codex_metrics:
+    path: /telemetry/codex/metrics.json
+    format: json
+
+  file/gemini_traces:
+    path: /telemetry/gemini/traces.json
+    format: json
+
+  file/gemini_logs:
+    path: /telemetry/gemini/logs.json
+    format: json
+
+  file/gemini_metrics:
+    path: /telemetry/gemini/metrics.json
+    format: json
+
+  # Live forwarding to your laptop through the SSH reverse tunnel.
+  otlp/laptop:
+    endpoint: 127.0.0.1:14317
+    tls:
+      insecure: true
+
+  debug:
+    verbosity: basic
+
+service:
+  pipelines:
+    traces/codex:
+      receivers: [otlp/codex]
+      processors: [resource/codex, batch]
+      exporters: [file/codex_traces, otlp/laptop]
+
+    logs/codex:
+      receivers: [otlp/codex]
+      processors: [resource/codex, batch]
+      exporters: [file/codex_logs, otlp/laptop]
+
+    metrics/codex:
+      receivers: [otlp/codex]
+      processors: [resource/codex, batch]
+      exporters: [file/codex_metrics, otlp/laptop]
+
+    traces/gemini:
+      receivers: [otlp/gemini]
+      processors: [resource/gemini, batch]
+      exporters: [file/gemini_traces, otlp/laptop]
+
+    logs/gemini:
+      receivers: [otlp/gemini]
+      processors: [resource/gemini, batch]
+      exporters: [file/gemini_logs, otlp/laptop]
+
+    metrics/gemini:
+      receivers: [otlp/gemini]
+      processors: [resource/gemini, batch]
+      exporters: [file/gemini_metrics, otlp/laptop]
