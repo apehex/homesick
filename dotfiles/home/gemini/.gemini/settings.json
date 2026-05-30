@@ -1,10 +1,15 @@
 {
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal",
+    },
+  },
   "telemetry": {
     "enabled": true,
     "target": "local",
     "otlpEndpoint": "http://127.0.0.1:4327",
     "otlpProtocol": "grpc",
     "logPrompts": false,
-    "useCollector": true
-  }
+    "useCollector": true,
+  },
 }
