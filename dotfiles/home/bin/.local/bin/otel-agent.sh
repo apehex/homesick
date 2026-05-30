@@ -129,6 +129,7 @@ case "${1:-}" in
   stop|shutdown)
     require_docker
     stop_collector
+    cleanup_containers
     ;;
   restart)
     require_docker
