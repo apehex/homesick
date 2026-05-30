@@ -4,7 +4,7 @@ approvals_reviewer = "user"
 
 [otel]
 environment = "vps"
-log_user_prompt = false
+log_user_prompt = true
 exporter = { otlp-grpc = {
   endpoint = "http://127.0.0.1:4317"
 }}
