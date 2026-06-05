@@ -1,7 +1,11 @@
-apps = false
 model = "gpt-5.5"
 model_reasoning_effort = "high"
 approvals_reviewer = "user"
+
+[features]
+apps = false
+plugins = false
+plugin_sharing = false
 
 [otel]
 environment = "vps"
@@ -15,3 +19,6 @@ trace_exporter = { otlp-grpc = {
 metrics_exporter = { otlp-grpc = {
   endpoint = "http://127.0.0.1:4317"
 }}
+
+[tui.model_availability_nux]
+"gpt-5.5" = 1
