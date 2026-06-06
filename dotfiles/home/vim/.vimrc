@@ -40,7 +40,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set cinoptions=(0,m1,:1
-set tw=80
+set textwidth=0
 set formatoptions=tcqro2
 set smartindent
 set laststatus=2
