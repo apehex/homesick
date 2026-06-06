@@ -62,7 +62,7 @@ export NVM_DIR="$HOME/.local/share/nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Disable broken mouse buttons
-xmodmap $HOME/.Xmodmap
+# xmodmap $HOME/.Xmodmap
 
 # Display a background
 # . $HOME/.local/share/feh/.fehbg
