@@ -51,10 +51,10 @@ export PATH="$GOPATH/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # foundry
-export PATH="$PATH:/home/gully/.local/share/foundry/bin"
+export PATH="$PATH:$HOME/.local/share/foundry/bin"
 
 # heimdall-rs
-export PATH="$PATH:/home/gully/.local/share/bifrost/bin"
+export PATH="$PATH:$HOME/.local/share/bifrost/bin"
 
 # setup nvm
 export NVM_DIR="$HOME/.local/share/nvm"
