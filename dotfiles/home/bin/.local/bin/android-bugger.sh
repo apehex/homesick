@@ -3,9 +3,10 @@ set -Eeuo pipefail
 
 # META #########################################################################
 
-AVD_NAME=""
-START_AVD=0
-LIST_ONLY=0
+IMAGE_NAME=""
+LIST_IMAGES=0
+LIST_DEVICES=0
+STOP=0
 NO_WINDOW=0
 WIPE_DATA=0
 SHOW_HELP=0
@@ -21,11 +22,20 @@ LOCAL_BURP_PORT="${LOCAL_BURP_PORT:-8080}"
 print_usage() {
   cat <<EOF
 Usage:
-  android-bugger.sh [options] [avd-name]
+  android-bugger.sh [options] [image-name]
+
+Default behavior:
+  android-bugger.sh                 Start/check the ADB server
+  android-bugger.sh <image-name>    Start/check ADB server and launch the AVD image
+  android-bugger.sh --images        List available AVD image names
+  android-bugger.sh --devices       List running Android devices/emulators
+  android-bugger.sh --stop          Stop all running emulators and the ADB server
+  android-bugger.sh --stop <device> Stop one running emulator device, e.g. emulator-5554
 
 Options:
-  -l, --list       List available AVDs and connected devices, then exit
-  -s, --start      Start the selected AVD
+  -i, --images     List available AVD image names, then exit
+  -d, --devices    List running Android devices/emulators, then exit
+  -s, --stop       Stop one device if provided, otherwise stop all emulators and ADB server
   -n, --no-window  Start emulator headless
   -w, --wipe-data  Wipe AVD data before boot
   -h, --help       Show this help
@@ -37,9 +47,13 @@ Environment:
   REMOTE_BURP_PORT=$REMOTE_BURP_PORT
 
 Examples:
-  android-bugger.sh --list
-  android-bugger.sh --start Pixel_8_API_35
-  android-bugger.sh --start --no-window Pixel_8_API_35
+  android-bugger.sh
+  android-bugger.sh --images
+  android-bugger.sh --devices
+  android-bugger.sh Pixel_3_API_35_Play
+  android-bugger.sh --no-window Pixel_3_API_35_Play
+  android-bugger.sh --stop emulator-5554
+  android-bugger.sh --stop
 
 Expected SSH RemoteForward for the agent on the VPS:
   RemoteForward 127.0.0.1:5037 127.0.0.1:5037
@@ -97,12 +111,7 @@ have() {
 find_tool() {
   local tool="$1"
 
-  if have "$tool"; then
-    command -v "$tool"
-    return 0
-  fi
-
-  for root in "${ANDROID_HOME:-}" "${ANDROID_SDK_ROOT:-}" "$HOME/.local/android/sdk" "/opt/android-sdk"; do
+  for root in "${ANDROID_HOME:-}" "${ANDROID_SDK_ROOT:-}" "$HOME/.local/share/android/sdk"; do
     [[ -n "$root" ]] || continue
     for candidate in \
       "$root/platform-tools/$tool" \
@@ -116,6 +125,11 @@ find_tool() {
     done
   done
 
+  if have "$tool"; then
+    command -v "$tool"
+    return 0
+  fi
+
   return 1
 }
 
@@ -124,12 +138,16 @@ find_tool() {
 parse_args() {
   while [[ $# -gt 0 ]]; do
     case "$1" in
-      -l|--list)
-        LIST_ONLY=1
+      -i|--images)
+        LIST_IMAGES=1
         shift
         ;;
-      -s|--start)
-        START_AVD=1
+      -d|--devices)
+        LIST_DEVICES=1
+        shift
+        ;;
+      -s|--stop)
+        STOP=1
         shift
         ;;
       -n|--no-window)
@@ -152,8 +170,8 @@ parse_args() {
         die "unknown option: $1"
         ;;
       *)
-        if [[ -z "$AVD_NAME" ]]; then
-          AVD_NAME="$1"
+        if [[ -z "$IMAGE_NAME" ]]; then
+          IMAGE_NAME="$1"
           shift
         else
           die "unexpected extra argument: $1"
@@ -163,17 +181,31 @@ parse_args() {
   done
 }
 
-# DEVICES ######################################################################
+# INFO #########################################################################
 
-list_avds() {
+list_images() {
   echo
-  echo "Available AVDs:"
-  if "$EMULATOR" -list-avds 2>/dev/null | sed 's/^/  - /'; then
-    true
-  else
-    echo "  unable to list AVDs"
-  fi
+  echo "Available AVD images:"
+  "$EMULATOR" -list-avds 2>/dev/null | sed 's/^/  - /' || {
+    echo "  unable to list AVD images"
+    return 1
+  }
 }
+
+list_devices() {
+  echo
+  "$ADB" devices -l || true
+}
+
+all_emulators() {
+  "$ADB" devices | awk '/^emulator-[0-9]+[[:space:]]+device$/ {print $1}'
+}
+
+all_devices() {
+  "$ADB" devices | awk 'NR > 1 && $1 != "" {print $1}'
+}
+
+# START ########################################################################
 
 start_adb() {
   echo
@@ -181,16 +213,10 @@ start_adb() {
   "$ADB" start-server >/dev/null
 }
 
-list_devices() {
-  echo
-  echo "ADB devices:"
-  "$ADB" devices -l || true
-}
+start_image() {
+  [[ -n "$IMAGE_NAME" ]] || die "missing image name. Use --images to list available AVD images."
 
-start_avd() {
-  [[ -n "$AVD_NAME" ]] || die "missing AVD name. Use --list to list available AVDs."
-
-  local args=("@$AVD_NAME")
+  local args=("@$IMAGE_NAME")
 
   if [[ "$NO_WINDOW" -eq 1 ]]; then
     args+=("-no-window")
@@ -201,7 +227,7 @@ start_avd() {
   fi
 
   echo
-  echo "Starting AVD: $AVD_NAME"
+  echo "Starting AVD image: $IMAGE_NAME"
   echo "Command: $EMULATOR ${args[*]}"
   nohup "$EMULATOR" "${args[@]}" >/tmp/android-bugger-emulator.log 2>&1 &
 
@@ -227,11 +253,55 @@ wait_device() {
   echo "warning: timed out waiting for sys.boot_completed=1" >&2
 }
 
+# STOP #########################################################################
+
+stop_adb() {
+  echo
+  echo "Stopping ADB server..."
+  "$ADB" kill-server || true
+}
+
+stop_device() {
+  local device="$1"
+
+  echo "Stopping device: $device"
+
+  if [[ "$device" == emulator-* ]]; then
+    "$ADB" -s "$device" emu kill || true
+  else
+    echo "warning: $device is not an emulator; refusing to stop non-emulator device" >&2
+    return 1
+  fi
+}
+
+stop_all() {
+  echo
+  echo "Stopping all running emulators..."
+
+  local found=0
+  local device
+
+  while read -r device; do
+    [[ -n "$device" ]] || continue
+    found=1
+    stop_device "$device" || true
+  done < <(all_emulators)
+
+  if [[ "$found" -eq 0 ]]; then
+    echo "No running emulators found."
+  fi
+
+  stop_adb
+}
+
 # MAIN #########################################################################
 
 parse_args "$@"
 
-[[ "$SHOW_HELP" -eq 1 ]] && { print_usage; exit 0; }
+if [[ "$SHOW_HELP" -eq 1 ]]; then
+  print_usage
+  exit 0
+fi
 
 ADB="$(find_tool adb)" || die "adb not found. Install Android platform-tools or set ANDROID_HOME/ANDROID_SDK_ROOT."
 EMULATOR="$(find_tool emulator)" || die "emulator not found. Install Android Emulator or set ANDROID_HOME/ANDROID_SDK_ROOT."
@@ -239,17 +309,35 @@ EMULATOR="$(find_tool emulator)" || die "emulator not found. Install Android Emu
 echo "Using adb:      $ADB"
 echo "Using emulator: $EMULATOR"
 
-start_adb
-list_avds
-list_devices
-
-[[ "$LIST_ONLY" -eq 1 ]] && { print_handoff; exit 0; }
-
-if [[ "$START_AVD" -eq 1 ]]; then
-  start_avd
-  wait_device
-  list_devices
-  print_info
+if [[ "$STOP" -eq 1 ]]; then
+  if [[ -n "$IMAGE_NAME" ]]; then
+    stop_device "$IMAGE_NAME"
+  else
+    stop_all
+  fi
+  exit 0
 fi
 
+if [[ "$LIST_IMAGES" -eq 1 ]]; then
+  list_images
+  exit 0
+fi
+
+if [[ "$LIST_DEVICES" -eq 1 ]]; then
+  list_devices
+  exit 0
+fi
+
+if [[ -z "$IMAGE_NAME" ]]; then
+  start_adb
+  list_devices
+  print_handoff
+  exit 0
+fi
+
+start_adb
+start_image
+wait_device
+list_devices
+print_info
 print_handoff
