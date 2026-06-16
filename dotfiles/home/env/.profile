@@ -51,6 +51,7 @@ export PATH="$GOPATH/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # foundry
+export FOUNDRY_DIR="$HOME/.local/share/foundry"
 export PATH="$PATH:$HOME/.local/share/foundry/bin"
 
 # heimdall-rs
