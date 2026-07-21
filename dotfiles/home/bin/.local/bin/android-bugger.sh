@@ -6,7 +6,7 @@ set -Eeuo pipefail
 IMAGE_NAME=""
 LIST_IMAGES=0
 LIST_DEVICES=0
-STOP=0
+STOP_SERVER=0
 NO_WINDOW=0
 WIPE_DATA=0
 SHOW_HELP=0
@@ -147,7 +147,7 @@ parse_args() {
         shift
         ;;
       -s|--stop)
-        STOP=1
+        STOP_SERVER=1
         shift
         ;;
       -n|--no-window)
@@ -309,7 +309,7 @@ EMULATOR="$(find_tool emulator)" || die "emulator not found. Install Android Emu
 echo "Using adb:      $ADB"
 echo "Using emulator: $EMULATOR"
 
-if [[ "$STOP" -eq 1 ]]; then
+if [[ "$STOP_SERVER" -eq 1 ]]; then
   if [[ -n "$IMAGE_NAME" ]]; then
     stop_device "$IMAGE_NAME"
   else
