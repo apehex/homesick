@@ -39,6 +39,10 @@ export TERMINAL=urxvt
 export XDG_CURRENT_DESKTOP=i3
 export XDG_SESSION_TYPE=x11
 
+# relocate the android stuff
+export ANDROID_HOME="$HOME/.local/share/android/sdk"
+export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
+
 # install Ruby Gems to ~/.gem
 export GEM_HOME="$HOME/.local/share/gem"
 export PATH="$HOME/.local/share/gem/bin:$PATH"
