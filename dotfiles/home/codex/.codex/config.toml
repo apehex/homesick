@@ -1,6 +1,7 @@
-model = "gpt-5.5"
+model = "gpt-5.6-sol"
 model_reasoning_effort = "high"
 approvals_reviewer = "user"
+plan_mode_reasoning_effort = "medium"
 
 [features]
 apps = false
@@ -21,4 +22,5 @@ metrics_exporter = { otlp-grpc = {
 }}
 
 [tui.model_availability_nux]
-"gpt-5.5" = 1
+"gpt-5.5" = 4
+"gpt-5.6-sol" = 4
