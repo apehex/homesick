@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Codex PostToolUse hook: report OOM evidence for the exact Bash scope."""
+"""Report OOM evidence for the exact Codex Bash command scope."""
 
 from __future__ import annotations
 
@@ -10,7 +10,6 @@ from typing import Any
 
 from oom_lib import encode_json_packet, read_json_stream, scope_unit
 from oom_systemd import classify_oom, inspect_scope, reset_failed_scope
-
 
 # CONSTANTS ####################################################################
 
@@ -60,7 +59,7 @@ def format_observation(observation: dict[str, Any], classification: str) -> str:
         "The preceding shell tool was terminated by a resource guard: "
         f"{classification} in {observation['unit']}; "
         f"peak memory {format_size(observation.get('memory_peak_bytes'))}, "
-        f"peak swap {format_size(observation.get('swap_peak_bytes'))}. "
+        f"peak swap {format_size(observation.get('memory_swap_peak_bytes'))}. "
         "Treat incomplete command output as a killed subprocess and use the "
         "oom-control skill to inspect or tune the limits."
     )
@@ -76,7 +75,7 @@ def emit_observation(observation: dict[str, Any], classification: str) -> None:
     sys.stdout.buffer.write(encode_json_packet(output))
 
 
-# ENTRYPOINT ###################################################################
+# MAIN #########################################################################
 
 
 def main() -> int:

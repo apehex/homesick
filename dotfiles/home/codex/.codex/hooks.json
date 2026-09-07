@@ -1,5 +1,5 @@
 {
-  "description": "Isolate Codex shell commands and report cgroup/OOM outcomes.",
+  "description": "Isolate Codex shell commands with named OOM configs and report cgroup/OOM outcomes.",
   "hooks": {
     "SessionStart": [
       {
@@ -7,7 +7,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/usr/bin/python3 /home/avrana/.codex/hooks/oom_setup.py --hook --slice-name=codex-jobs.slice --slice-high=10G --slice-max=12G --pressure-limit=40% --pressure-duration=15s",
+            "command": "/usr/bin/python3 \"$HOME/.codex/hooks/oom_setup.py\" --hook --config default",
             "timeout": 5
           }
         ]
@@ -19,7 +19,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/usr/bin/python3 /home/avrana/.codex/hooks/oom_guard.py --slice-name=codex-jobs.slice --job-max=7G --job-swap-max=256M --tasks-max=512",
+            "command": "/usr/bin/python3 \"$HOME/.codex/hooks/oom_guard.py\" --config default",
             "timeout": 5
           }
         ]
@@ -31,7 +31,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/usr/bin/python3 /home/avrana/.codex/hooks/oom_callback.py",
+            "command": "/usr/bin/python3 \"$HOME/.codex/hooks/oom_callback.py\"",
             "timeout": 3
           }
         ]

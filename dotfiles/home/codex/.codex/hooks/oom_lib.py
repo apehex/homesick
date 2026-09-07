@@ -9,7 +9,6 @@ import subprocess
 from collections.abc import Callable
 from typing import Any, BinaryIO
 
-
 # CONSTANTS ####################################################################
 
 

@@ -1,0 +1,17 @@
+version = 1
+
+[configs.default.slice]
+name = "codex-jobs.slice"
+memory_accounting = true
+memory_high = "10G"
+memory_max = "12G"
+managed_oom_memory_pressure = "kill"
+managed_oom_memory_pressure_limit = "40%"
+managed_oom_memory_pressure_duration = "15s"
+
+[configs.default.job]
+memory_accounting = true
+memory_max = "7G"
+memory_swap_max = "256M"
+tasks_max = 512
+oom_policy = "kill"

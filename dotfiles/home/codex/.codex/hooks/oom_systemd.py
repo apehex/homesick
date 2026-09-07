@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Small systemd and cgroup operations used by the Codex OOM hooks."""
+"""Systemd and cgroup operations used by the Codex OOM hooks."""
 
 from __future__ import annotations
 
 from pathlib import Path
 from typing import Any
 
+from oom_config import SliceConfiguration
 from oom_lib import parse_records, run_subprocess, unsigned_integer
-
 
 # CONSTANTS ####################################################################
 
@@ -24,7 +24,6 @@ UNIT_COMMAND_TIMEOUT_SECONDS = 2.0
 JOURNAL_COMMAND_TIMEOUT_SECONDS = 2.0
 JOURNAL_LOOKBACK = "-5min"
 
-MANAGED_OOM_MODE = "kill"
 PROPERTY_SEPARATOR = "="
 CGROUP_RECORD_SEPARATOR = " "
 SYSTEMD_PROPERTIES = (
@@ -39,7 +38,7 @@ PEAK_PROPERTIES = (
 )
 PEAK_FILES = (
     ("memory.peak", "memory_peak_bytes"),
-    ("memory.swap.peak", "swap_peak_bytes"),
+    ("memory.swap.peak", "memory_swap_peak_bytes"),
 )
 
 
@@ -58,25 +57,26 @@ def compose_slice_probe_command(slice_name: str) -> list[str]:
     ]
 
 
-def compose_slice_configuration_command(
-    slice_name: str,
-    memory_high: str,
-    memory_max: str,
-    pressure_limit: str,
-    pressure_duration: str,
-) -> list[str]:
+def compose_slice_configuration_command(config: SliceConfiguration) -> list[str]:
+    accounting = "yes" if config.memory_accounting else "no"
     return [
         SYSTEMCTL,
         "--user",
         "set-property",
         "--runtime",
-        slice_name,
-        "MemoryAccounting=yes",
-        f"MemoryHigh={memory_high}",
-        f"MemoryMax={memory_max}",
-        f"ManagedOOMMemoryPressure={MANAGED_OOM_MODE}",
-        f"ManagedOOMMemoryPressureLimit={pressure_limit}",
-        f"ManagedOOMMemoryPressureDurationSec={pressure_duration}",
+        config.name,
+        f"MemoryAccounting={accounting}",
+        f"MemoryHigh={config.memory_high}",
+        f"MemoryMax={config.memory_max}",
+        f"ManagedOOMMemoryPressure={config.managed_oom_memory_pressure}",
+        (
+            "ManagedOOMMemoryPressureLimit="
+            f"{config.managed_oom_memory_pressure_limit}"
+        ),
+        (
+            "ManagedOOMMemoryPressureDurationSec="
+            f"{config.managed_oom_memory_pressure_duration}"
+        ),
     ]
 
 
@@ -86,25 +86,13 @@ def checked_command(command: list[str], failure: str) -> None:
         raise RuntimeError(result.stderr.strip() or failure)
 
 
-def configure_slice(
-    slice_name: str,
-    memory_high: str,
-    memory_max: str,
-    pressure_limit: str,
-    pressure_duration: str,
-) -> None:
+def configure_slice(config: SliceConfiguration) -> None:
     checked_command(
-        compose_slice_probe_command(slice_name),
+        compose_slice_probe_command(config.name),
         "could not load job slice",
     )
     checked_command(
-        compose_slice_configuration_command(
-            slice_name,
-            memory_high,
-            memory_max,
-            pressure_limit,
-            pressure_duration,
-        ),
+        compose_slice_configuration_command(config),
         "could not configure job slice",
     )
 

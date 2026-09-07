@@ -1,28 +1,24 @@
 #!/usr/bin/env python3
-"""Codex PreToolUse hook: place one Bash tool call in a bounded user cgroup."""
+"""Rewrite one Codex Bash tool call through the named OOM config."""
 
 from __future__ import annotations
 
 import argparse
 import json
+import os
 import shlex
 import sys
 from pathlib import Path
 from typing import Any
 
+from oom_config import CONFIG_PATH, ConfigurationError, load_config
 from oom_lib import encode_json_packet, read_json_stream, scope_unit
-
 
 # CONSTANTS ####################################################################
 
 
-DEFAULT_SLICE_NAME = "codex-jobs.slice"
-DEFAULT_JOB_MEMORY_MAX = "7G"
-DEFAULT_JOB_SWAP_MAX = "256M"
-DEFAULT_TASKS_MAX = "512"
-
-SYSTEMD_RUN = "/usr/bin/systemd-run"
-BASH_PATH = "/usr/bin/bash"
+DEFAULT_CONFIG = "default"
+OOM_EXEC = Path(__file__).resolve().with_name("oom_exec.py")
 
 
 # INPUTS #######################################################################
@@ -30,10 +26,7 @@ BASH_PATH = "/usr/bin/bash"
 
 def parse_inputs() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--slice-name", default=DEFAULT_SLICE_NAME)
-    parser.add_argument("--job-max", default=DEFAULT_JOB_MEMORY_MAX)
-    parser.add_argument("--job-swap-max", default=DEFAULT_JOB_SWAP_MAX)
-    parser.add_argument("--tasks-max", default=DEFAULT_TASKS_MAX)
+    parser.add_argument("--config", default=DEFAULT_CONFIG)
     return parser.parse_args()
 
 
@@ -79,53 +72,32 @@ def emit_hook_output(
 # COMMAND COMPOSITION ##########################################################
 
 
-def compose_guarded_command(
-    command: str,
-    unit: str,
-    args: argparse.Namespace,
-) -> str:
-    wrapped = [
-        SYSTEMD_RUN,
-        "--user",
-        "--scope",
-        "--quiet",
-        "--same-dir",
-        f"--unit={unit}",
-        f"--slice={args.slice_name}",
-        "--property=MemoryAccounting=yes",
-        f"--property=MemoryMax={args.job_max}",
-        f"--property=MemorySwapMax={args.job_swap_max}",
-        f"--property=TasksMax={args.tasks_max}",
-        "--property=OOMPolicy=kill",
-        "--",
-        BASH_PATH,
-        "-lc",
-        command,
-    ]
-    return shlex.join(wrapped)
+def compose_guarded_command(config: str, unit: str, command: str) -> str:
+    return shlex.join([str(OOM_EXEC), config, unit, command])
 
 
-# ENTRYPOINT ###################################################################
+# MAIN #########################################################################
 
 
 def main() -> int:
     args = parse_inputs()
-    if not Path(SYSTEMD_RUN).is_file():
+    if not OOM_EXEC.is_file() or not os.access(OOM_EXEC, os.X_OK):
         emit_hook_output(
             "deny",
-            f"{SYSTEMD_RUN} is unavailable; refusing an unguarded Bash tool call",
+            f"{OOM_EXEC} is unavailable; refusing an unguarded Bash tool call",
         )
         return 0
     try:
+        load_config(args.config, CONFIG_PATH)
         tool_input, command, session_id, tool_use_id = read_hook_input()
-    except (json.JSONDecodeError, TypeError, ValueError) as error:
-        emit_hook_output("deny", f"OOM guard rejected malformed hook input: {error}")
+    except (ConfigurationError, json.JSONDecodeError, OSError, TypeError, ValueError) as error:
+        emit_hook_output("deny", f"OOM guard rejected the Bash tool call: {error}")
         return 0
 
     unit = scope_unit(session_id, tool_use_id)
     updated_input = {
         **tool_input,
-        "command": compose_guarded_command(command, unit, args),
+        "command": compose_guarded_command(args.config, unit, command),
     }
     emit_hook_output("allow", updated_input=updated_input)
     return 0
