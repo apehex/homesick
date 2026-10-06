@@ -1,4 +1,4 @@
-version = 1
+version = 2
 
 [configs.default.slice]
 name = "codex-jobs.slice"
@@ -15,3 +15,4 @@ memory_max = "7G"
 memory_swap_max = "256M"
 tasks_max = 512
 oom_policy = "kill"
+managed_oom_preference = "avoid"

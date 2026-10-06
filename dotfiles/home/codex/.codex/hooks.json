@@ -1,5 +1,5 @@
 {
-  "description": "Isolate Codex shell commands with named OOM configs and report cgroup/OOM outcomes.",
+  "description": "Isolate Codex shell commands, preserve OOM evidence, clean failed scopes, and monitor surviving descendants.",
   "hooks": {
     "SessionStart": [
       {
@@ -31,8 +31,16 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/usr/bin/python3 \"$HOME/.codex/hooks/oom_callback.py\"",
-            "timeout": 3
+            "command": "/usr/bin/python3 \"$HOME/.codex/hooks/oom_callback.py\" --config default --monitor-seconds 21600",
+            "timeout": 5,
+            "additionalContextLimit": 1000
+          },
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 \"$HOME/.codex/hooks/oom_monitor.py\" --config default --grace-seconds 2 --poll-seconds 5 --max-seconds 21600",
+            "async": true,
+            "timeout": 21630,
+            "additionalContextLimit": 1000
           }
         ]
       }

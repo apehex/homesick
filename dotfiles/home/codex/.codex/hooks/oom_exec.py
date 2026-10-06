@@ -32,6 +32,7 @@ def systemd_command(config: Configuration, unit: str, command: str) -> list[str]
         "--scope",
         "--quiet",
         "--same-dir",
+        "--expand-environment=no",
         f"--unit={unit}",
         f"--slice={config.slice.name}",
         f"--property=MemoryAccounting={accounting}",
@@ -39,6 +40,10 @@ def systemd_command(config: Configuration, unit: str, command: str) -> list[str]
         f"--property=MemorySwapMax={config.job.memory_swap_max}",
         f"--property=TasksMax={config.job.tasks_max}",
         f"--property=OOMPolicy={config.job.oom_policy}",
+        (
+            "--property=ManagedOOMPreference="
+            f"{config.job.managed_oom_preference}"
+        ),
         "--",
         str(BASH_PATH),
         "-lc",

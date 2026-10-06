@@ -14,7 +14,7 @@ import tomllib
 
 
 CONFIG_PATH = Path(__file__).resolve().with_name("oom_config.toml")
-CONFIG_VERSION = 1
+CONFIG_VERSION = 2
 
 CONFIG_KEYS = frozenset({"slice", "job"})
 SLICE_KEYS = frozenset(
@@ -35,11 +35,13 @@ JOB_KEYS = frozenset(
         "memory_swap_max",
         "tasks_max",
         "oom_policy",
+        "managed_oom_preference",
     }
 )
 
 OOM_POLICIES = frozenset({"continue", "stop", "kill"})
 MANAGED_OOM_MODES = frozenset({"auto", "kill"})
+MANAGED_OOM_PREFERENCES = frozenset({"none", "avoid", "omit"})
 
 CONFIG_NAME_PATTERN = re.compile(r"[a-z][a-z0-9_-]*")
 SLICE_UNIT_PATTERN = re.compile(r"[A-Za-z0-9_.:@-]+\.slice")
@@ -75,6 +77,7 @@ class JobConfiguration:
     memory_swap_max: str
     tasks_max: int
     oom_policy: str
+    managed_oom_preference: str
 
 
 @dataclass(frozen=True)
@@ -185,12 +188,22 @@ def parse_job(record: Any, subject: str) -> JobConfiguration:
         choices = ", ".join(sorted(OOM_POLICIES))
         raise ConfigurationError(f"{subject} oom_policy must be one of: {choices}")
 
+    managed_oom_preference = require_string(
+        values, "managed_oom_preference", subject
+    )
+    if managed_oom_preference not in MANAGED_OOM_PREFERENCES:
+        choices = ", ".join(sorted(MANAGED_OOM_PREFERENCES))
+        raise ConfigurationError(
+            f"{subject} managed_oom_preference must be one of: {choices}"
+        )
+
     return JobConfiguration(
         memory_accounting=require_boolean(values, "memory_accounting", subject),
         memory_max=require_memory(values, "memory_max", subject),
         memory_swap_max=require_memory(values, "memory_swap_max", subject),
         tasks_max=tasks_max,
         oom_policy=oom_policy,
+        managed_oom_preference=managed_oom_preference,
     )
 
 
